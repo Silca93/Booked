@@ -1,11 +1,11 @@
 'use client'
 
 import { configureStore } from "@reduxjs/toolkit";
-import { testSlice } from "./slices";
+import { basketSlice } from "./slices/slices";
 
-export const store = ({
+export const store = configureStore({
     reducer: {
-        test:testSlice.reducer,
+        basket:basketSlice.reducer,
 
     }
 })
