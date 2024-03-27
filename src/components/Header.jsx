@@ -33,7 +33,9 @@ export default function Header() {
                     />
                 </div>
                 <div className="w-[20%] h-full flex justify-center items-center">
-                    <p className="font-bold">HOME</p>
+                   <Link href="/">
+                     <p className="font-bold">HOME</p>
+                   </Link> 
                 </div>
                 <div className="w-[50%] h-full flex justify-center items-center ">
                     <div className="w-[85%] h-[60%]   flex border-black border-[1px] rounded-lg">

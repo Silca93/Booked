@@ -4,7 +4,9 @@ import Image from 'next/image';
 export default async function API() {
       const response = await fetch('https:/example-data.draftbit.com/books');
       const data = await response.json();
-      console.log(data);
+      
+      
+
   return (
     <>
         {
@@ -27,7 +29,7 @@ export default async function API() {
                 </div>
                 <div className="w-full h-[3rem] bg-yellow-200 flex">
                     <div className="left w-1/2 h-full flex justify-center items-center">
-                        Price
+                        Price: {Math.floor(Math.random()*20)} €
                     </div>
                     <div className="right w-1/2 h-full flex justify-center items-center">
                         <div className="flex w-[4rem] h-[2rem] bg-red-400 rounded-lg border-white border-[2px]">
