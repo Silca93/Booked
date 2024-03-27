@@ -14,7 +14,7 @@ import logo from './../assets/images/logos/booked.png'
 
 export default function Header() {
   return (
-    <div className='w-vw h-[10rem] flex justify-center items-center'>
+    <div className='w-vw h-[10rem] flex justify-center items-center relative'>
         <div className="navbar w-[70%] h-[60%] bg-slate-400 rounded-full mx-[6rem] flex items-center">
             <div className="Left w-[30%] h-full  rounded-l-full flex items-center">
                 <div className="flex items-center justify-center w-[30%] h-full  rounded-l-full">
@@ -44,16 +44,13 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-            <div className="Mid w-[40%] h-[4rem] bg-slate-100 rounded-lg">
-              <div className="w-full h-full flex">
-                <div className="w-[7rem] h-full bg-gray-200 rounded-l-lg flex justify-center items-center">
-                 <IoSearch />
+            <div className="Mid w-[40%] h-[4rem] bg-red-100 rounded-lg flex">
+                <div className="w-[20%] h-full bg-gray-200 rounded-l-lg flex justify-center items-center">
+                 <IoSearch size={25} />
                 </div>
-                <div className="w-[23rem] h-full bg-red-800 rounded-r-lg">
-                 <input type="text" placeholder='Search' className="w-[27rem] h-full rounded-r-lg" />
+                <div className="w-[80%] h-full  rounded-r-lg">
+                 <input type="text" placeholder='Search' className="px-3 w-[100%] h-full rounded-r-lg" />
                 </div>
-              </div>
-                    
             </div>
             <div className="Right w-[30%] h-full  rounded-r-full flex">
                 <div className="w-[50%] h-full flex gap-2 justify-end items-center">
