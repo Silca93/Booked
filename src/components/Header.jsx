@@ -20,8 +20,8 @@ export default function Header() {
   const basketItems = useSelector((state) => state.basket.value.length);
 
   return (
-    <div className='w-vw h-[10rem] flex justify-center items-center relative'>
-        <div className="navbar w-[70%] h-[60%] bg-slate-400 rounded-full mx-[6rem] flex items-center">
+    <div className='w-vw h-[10rem] flex justify-center items-center bg-[#f5f4f3] relative'>
+        <div className="navbar w-[70%] h-[60%] bg-[#dedcd6] rounded-full mx-[6rem] flex items-center">
             <div className="Left w-[30%] h-full  rounded-l-full flex items-center">
                 <div className="flex items-center justify-center w-[30%] h-full  rounded-l-full">
                     <Image

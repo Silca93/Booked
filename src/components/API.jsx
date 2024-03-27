@@ -10,9 +10,9 @@ export default async function API() {
   return (
     <>
         {
-        data.map((element, index) => (
-            <div key={index} className="w-[20rem] h-[25rem] flex flex-col">
-                <div className="w-full h-[18rem] bg-yellow-200 flex justify-center">
+        data.slice(0, 240).map((element, index) => (
+            <div key={index} className="w-[20rem] h-[25rem] flex flex-col bg-white rounded-lg overflow-hidden">
+                <div className="w-full h-[18rem]  flex justify-center">
                     <img src={element.image_url} alt="" width="100%"  />
                     {/* <Image
                     src={element.image_url}
@@ -21,13 +21,13 @@ export default async function API() {
                     height={100}
                     /> */}
                 </div>
-                <div className="w-full h-[2rem] bg-yellow-200 flex flex-col justify-start items-center">
+                <div className="w-full h-[2rem]  flex flex-col justify-start items-center">
                     <h1 className="text-lg">{element.title}</h1>
                 </div>
-                <div className="w-full h-[2rem] bg-yellow-200">
+                <div className="w-full h-[2rem] ">
                     <p className="text-start px-2">{element.authors}</p>
                 </div>
-                <div className="w-full h-[3rem] bg-yellow-200 flex">
+                <div className="w-full h-[3rem]  flex">
                     <div className="left w-1/2 h-full flex justify-center items-center">
                         Price: {Math.floor(Math.random()*20)} €
                     </div>

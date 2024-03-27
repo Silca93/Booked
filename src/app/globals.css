@@ -31,3 +31,32 @@ body {
     text-wrap: balance;
   }
 }
+
+.Bestbooks {
+  background-image: url(./../assets/images/images/Bestbooks.jpg);
+  background-size: cover;
+}
+
+.Greatreads {
+  background-image: url(./../assets/images/images/paperback.jpg);
+  background-size: cover;
+  background-position: 0px -100px;
+  
+}
+.Bestart {
+  background-image: url(./../assets/images/images/ART.jpg);
+  background-size: cover;
+  
+}
+
+.Kidsread {
+  background-image: url(./../assets/images/images/kidsread.jpg);
+  background-size: cover;
+}
+
+.Getlost {
+  background-image: url(./../assets/images/images/Landscape.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px -70px;
+}
