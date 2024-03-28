@@ -3,6 +3,8 @@ import React from 'react'
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchContent } from '@/Redux/slices/apiSlice' 
+import { addBasket } from '@/Redux/slices/slices'
+import { addFav } from '@/Redux/slices/favSlice'
 import Link from "next/link"
 import Image from 'next/image'
 
@@ -18,6 +20,8 @@ export default function Details({params}) {
   const details = useSelector((state) => state.content.contents)
   const isLoading = useSelector((state) => state.content.isLoading)
   const error = useSelector((state) => state.content.error)
+
+
 
   //array for the genres of books//
   const firstThreeGenres = details[params.id].genres.split(", ").slice(0, 3);
@@ -59,21 +63,22 @@ export default function Details({params}) {
             <p className="text-2xl font-bold">{details[params.id].title}</p>
             <p>By {details[params.id].authors}</p>
             <div className="flex w-full gap-5 pr-5 text-sm">
-             <p>Rating: {details[params.id].rating}/5 ({details[params.id].rating_count})</p>
+             <p>Rating: {details[params.id].rating}/5 ({details[params.id].rating_count.toLocaleString()})</p>
              <p>Edition: {details[params.id].edition == ""? "Unknown" : details[params.id].edition}</p>
              <p>Page count: {details[params.id].num_pages}</p>
              <p>Genre: {firstThreeGenres.join(", ")}</p>
             </div>
+            <hr className="h-[1px]"></hr>
             <p>{details[params.id].description}</p>
             <div className="flex gap-3 w-full pr-5">
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center">
                 <p>Format: {details[params.id].format}</p>
               </div>
-              <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center">
-                <button className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add To Favourites</button>
+              <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
+                <button onClick={() => dispatch(addFav("1"))} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add To Favourites</button>
               </div>
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
-                <button className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
+                <button onClick={() => dispatch(addBasket("1"))} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
               </div>
 
             </div>

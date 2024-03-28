@@ -7,9 +7,11 @@ import { IoSearch } from "react-icons/io5";
 import { SlBasket } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+
 import logo from './../assets/images/logos/booked.png';
 
-import { addBasket, removeBasket } from '@/Redux/slices/slices';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -18,6 +20,7 @@ export default function Header() {
 
   const dispatch = useDispatch();
   const basketItems = useSelector((state) => state.basket.value.length);
+  const favItems = useSelector((state) => state.favourites.value.length);
 
   return (
     <div className='w-vw h-[10rem] flex justify-center items-center bg-[#f5f4f3] relative'>
@@ -60,12 +63,12 @@ export default function Header() {
             </div>
             <div className="Right w-[30%] h-full  rounded-r-full flex">
                 <div className="w-[50%] h-full flex gap-2 justify-end items-center">
-                    <CgProfile size={25}/>
+                    <CgProfile size={25} />
                     <p>Account</p>
-                    <button onClick={() => dispatch(addBasket("1"))}>(+1)</button>
                 </div>
-                <div className="w-[50%] h-full flex gap-5 justify-center items-center">
-                    <FaRegHeart size={25} />
+                <div className="w-[50%] h-full flex gap-5 justify-center items-center relative">
+                     <FaHeart size={30}/>
+                    <span className="absolute top-7 left-7 text-white">{favItems}</span>
                 <div className="flex gap-3 justify-start items-center pl-3 w-[5rem] h-[2.5rem] bg-white rounded-full border-black border-[1px]">
                     <SlBasket size={25} />
                      {basketItems}

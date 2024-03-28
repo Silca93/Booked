@@ -41,7 +41,7 @@ function Api() {
                     /> */}
                 </div>
                 <div className="w-full h-[2rem]  flex flex-col justify-start items-center">
-                    <h1 className="text-lg">{element.title}</h1>
+                    <h1 className="text-lg line-clamp-1">{element.title}</h1>
                 </div>
                 <div className="w-full h-[2rem] ">
                     <p className="text-start px-2">{element.authors}</p>
