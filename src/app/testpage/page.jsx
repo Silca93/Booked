@@ -18,7 +18,8 @@ function Api() {
     const error = useSelector((state) => state.content.error)
   
     if (isLoading) {
-      return 'loading...'
+      return <span className="loading loading-spinner loading-lg"></span>
+
     }
   
     if (error) {
@@ -28,7 +29,7 @@ function Api() {
     return (
       <>
         {
-        data.map((element, id) => (
+        data.slice(0, 20).map((element, id) => (
            <Link  href={`/testpage/${id}`}>
             <div key={id} className="w-[20rem] h-[25rem] flex flex-col bg-[#dedcd6] rounded-lg overflow-hidden">
                 <div className="w-full h-[18rem]  flex justify-center">

@@ -68,7 +68,7 @@ export default function Header() {
                 </div>
                 <div className="w-[50%] h-full flex gap-5 justify-center items-center relative">
                      <FaHeart size={30}/>
-                    <span className="absolute top-7 left-7 text-white">{favItems}</span>
+                    <span className="">{favItems}</span>
                 <div className="flex gap-3 justify-start items-center pl-3 w-[5rem] h-[2.5rem] bg-white rounded-full border-black border-[1px]">
                     <SlBasket size={25} />
                      {basketItems}

@@ -11,7 +11,7 @@ export default async function API() {
   return (
     <>
         {
-        data.slice(0, 240).map((element, index) => (
+        data.slice(0, 20).map((element, index) => (
            <Link  href={`/${index}`}>
             <div key={index} className="w-[20rem] h-[25rem] flex flex-col bg-[#dedcd6] rounded-lg overflow-hidden">
                 <div className="w-full h-[18rem]  flex justify-center">
