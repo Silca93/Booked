@@ -44,20 +44,19 @@ export default function Little() {
             </div>
             <div className="flex w-[22%] ">
             <div className="flex h-full w-full flex-col gap-2">
-                    <div className="w-full h-[65%] bg-green-600 flex justify-center items-center overflow-hidden">
-                        {/* <img src={theroom} alt="" height={100} width={200}/> */}
-                        <Image
-                        
-                        src={theroom}
-                        alt='theroom'
-                        // objectFit='fill'
-                        width={180}
-                        height=""
-                        />
-                    </div>
-                    <p className="px-2">The Room</p>
-                    <p className="px-2">Tommy Wiseau</p>
-                    <p className="px-2 text-orange-400 text-xl"> {Math.floor(Math.random()*(20 - 5 + 1) + 5)} €</p>
+                <div className="w-full h-[65%] bg-green-600 flex justify-center items-center overflow-hidden">
+                    {/* <img src={theroom} alt="" height={100} width={200}/> */}
+                    <Image
+                    src={theroom}
+                    alt='theroom'
+                    // objectFit='fill'
+                    width={180}
+                    height=""
+                    />
+                </div>
+                <p className="px-2">The Room</p>
+                <p className="px-2">Tommy Wiseau</p>
+                <p className="px-2 text-orange-400 text-xl"> {Math.floor(Math.random()*(20 - 5 + 1) + 5)} €</p>
                 </div>       
             </div>
         </div>

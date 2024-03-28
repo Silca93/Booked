@@ -32,8 +32,7 @@ export default async function Home() {
       <div className="w-full flex  justify-center items-center gap-5 flex-wrap mt-4 mb-4">
         <Api/>
       </div>
-      {/* </Link> */}
-        <h1 className="text-xl font-bold my-[3rem]">Get inspired</h1> 
+      <h1 className="text-xl font-bold my-[3rem]">Get inspired</h1> 
       <div className="w-[90%] flex gap-2 ">
         <div className="left w-1/2">
           <div className="top w-full my-2">
@@ -65,7 +64,6 @@ export default async function Home() {
         <div className="right w-[30%] flex flex-col">
           <Bestsellers/>
         </div>
-        
       </div>
     </main>
   );

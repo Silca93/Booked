@@ -31,7 +31,7 @@ function Api() {
         {
         data.slice(0, 20).map((element, id) => (
            <Link  href={`/testpage/${id}`}>
-            <div key={id} className="w-[20rem] h-[25rem] flex flex-col bg-[#dedcd6] rounded-lg overflow-hidden">
+            <div key={id} className="w-[17rem] h-[25rem] flex flex-col bg-[#dedcd6] rounded-lg overflow-hidden">
                 <div className="w-full h-[18rem]  flex justify-center">
                     <img src={element.image_url} alt="" width="100%"  />
                     {/* <Image
