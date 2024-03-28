@@ -4,8 +4,8 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol:"https",
-                hostname:"images.gr-assets.com",
-                pathname: "/C:\\fakepath\\aaaaa.jpg"
+                hostname:"images.gr-assets.com/books",
+                // pathname: "/C:\\fakepath\\aaaaa.jpg"
             },
             {
                 protocol:"https",

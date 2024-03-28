@@ -1,19 +1,36 @@
-import React from 'react'
-import Image from 'next/image';
-import Link from 'next/link';
+'use client'
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchContent } from "@/Redux/slices/apiSlice"
+import Link from "next/link"
+import React from "react"
 
-export default async function API() {
-      const response = await fetch('https:/example-data.draftbit.com/books');
-      const data = await response.json();
-      
-      
-
-  return (
-    <>
+function Api() {
+    const dispatch = useDispatch()
+  
+    useEffect(() => {
+      dispatch(fetchContent())
+    }, [dispatch])
+  
+    const data = useSelector((state) => state.content.contents)
+    console.log(data);
+    const isLoading = useSelector((state) => state.content.isLoading)
+    const error = useSelector((state) => state.content.error)
+  
+    if (isLoading) {
+      return 'loading...'
+    }
+  
+    if (error) {
+      return error
+    }
+  
+    return (
+      <>
         {
-        data.slice(0, 240).map((element, index) => (
-           <Link  href={`/${index}`}>
-            <div key={index} className="w-[20rem] h-[25rem] flex flex-col bg-[#dedcd6] rounded-lg overflow-hidden">
+        data.map((element, id) => (
+           <Link  href={`/testpage/${id}`}>
+            <div key={id} className="w-[20rem] h-[25rem] flex flex-col bg-[#dedcd6] rounded-lg overflow-hidden">
                 <div className="w-full h-[18rem]  flex justify-center">
                     <img src={element.image_url} alt="" width="100%"  />
                     {/* <Image
@@ -31,7 +48,7 @@ export default async function API() {
                 </div>
                 <div className="w-full h-[3rem]  flex">
                     <div className="left w-1/2 h-full flex justify-center items-center">
-                        Price: {Math.floor(Math.random()*20)} €
+                        Price: {Math.floor(Math.random()*(20 - 5 + 1) + 5)} €
                     </div>
                     <div className="right w-1/2 h-full flex justify-center items-center">
                         <div className="flex w-[4rem] h-[2rem] bg-red-400 rounded-lg border-white border-[2px]">
@@ -46,9 +63,11 @@ export default async function API() {
       
         ))
         }
-    </>
-    
-  )
-}
-
-
+     </>
+          
+        
+     
+    )
+  }
+  
+  export default Api
