@@ -25,15 +25,14 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between px-5 bg-[#ebebe5]">
       <div className="my-5">
-        
         <Carrousel/>
       </div>
-      
-      <div className="w-full flex  justify-center items-center gap-5 flex-wrap mt-4 mb-4">
+      <h1 className="text-xl font-bold my-[3rem] mb-0">Our complete Collection</h1>
+      <div className="w-full flex py-[3rem]  justify-center items-center gap-5 flex-wrap mt-4 mb-4 bg-[#dedcd6] ">
         <Api/>
       </div>
       <h1 className="text-xl font-bold my-[3rem]">Get inspired</h1> 
-      <div className="w-[90%] flex gap-2 ">
+      <div className="w-[90%] flex gap-2  ">
         <div className="left w-1/2">
           <div className="top w-full my-2">
             <Bestbooks/>
@@ -56,7 +55,7 @@ export default async function Home() {
           </div>
         </div>
       </div> 
-      <div className="w-[90%] flex justify-center gap-3 my-2">
+      <div className="w-[90%] flex justify-center gap-3 my-[2rem] bg-[#F3F1EE]">
         <div className="left w-[70%] flex flex-col gap-3">
           <Little/>
           <Self/>

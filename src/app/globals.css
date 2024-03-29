@@ -60,3 +60,55 @@ body {
   background-repeat: no-repeat;
   background-position: 0px -70px;
 }
+
+
+/* vignettes */
+
+.Prince  {
+  background-image: url(./../assets/images/images/Lilprince.jpg);
+  background-size: cover;
+  background-position: 0px -40px;
+}
+
+.Drowned {
+  background-image: url(./../assets/images/images/drownedwoods.jpg);
+  background-size: cover;
+  background-position: 0px -20px;
+}
+
+.Room {
+  background-image: url(./../assets/images/images/Theroom.jpg);
+  background-size: cover;
+  /* background-position: 0px 0px; */
+  background-repeat: repeat;
+}
+
+.Harlem {
+  background-image:  url(./../assets/images/images/harlem.jpg);
+  background-size: cover;
+  background-position: 0px 0px;
+}
+
+.Silouhette {
+  background-image: url(./../assets/images/images/silouhette.jpeg);
+  background-size: cover;
+  background-position: 0px 0px;
+}
+
+.Gears {
+  background-image: url(./../assets/images/images/gears.jpeg);
+  background-size: cover;
+  background-position: 0px 0px;
+}
+
+.Loved {
+  background-image: url(./../assets/images/images/heart.jpg);
+  background-size: 90%;
+  background-position:10px 40%;
+}
+
+.Health {
+  background-image: url(./../assets/images/images/health.jpeg);
+  background-size: cover;
+  
+}

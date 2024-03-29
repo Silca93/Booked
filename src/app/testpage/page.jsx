@@ -29,9 +29,11 @@ function Api() {
     return (
       <>
         {
-        data.slice(0, 20).map((element, id) => (
+        data.slice(0, 18).map((element, id) => (
            <Link  href={`/testpage/${id}`}>
-            <div key={id} className="w-[17rem] h-[25rem] flex flex-col bg-[#dedcd6] rounded-lg overflow-hidden">
+      
+      
+            <div key={id} className="w-[17rem] h-[25rem] flex flex-col bg-[#ebebe5] rounded-md overflow-hidden">
                 <div className="w-full h-[18rem]  flex justify-center">
                     <img src={element.image_url} alt="" width="100%"  />
                     {/* <Image
@@ -42,7 +44,7 @@ function Api() {
                     /> */}
                 </div>
                 <div className="w-full h-[2rem]  flex flex-col justify-start items-center">
-                    <h1 className="text-lg line-clamp-1">{element.title}</h1>
+                    <h1 className="text-lg line-clamp-1 px-4">{element.title}</h1>
                 </div>
                 <div className="w-full h-[2rem] ">
                     <p className="text-start px-2">{element.authors}</p>
@@ -52,7 +54,7 @@ function Api() {
                         Price: {Math.floor(Math.random()*(20 - 5 + 1) + 5)} €
                     </div>
                     <div className="right w-1/2 h-full flex justify-center items-center">
-                        <div className="flex w-[4rem] h-[2rem] bg-red-400 rounded-lg border-white border-[2px]">
+                        <div className="flex w-[4rem] h-[2rem] bg-black rounded-sm border-white border-[2px]">
                             <button className="w-full h-full text-white">Buy</button>
                         </div>
                     </div>
