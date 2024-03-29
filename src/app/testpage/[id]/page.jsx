@@ -75,10 +75,10 @@ export default function Details({params}) {
                 <p>Format: {details[params.id].format}</p>
               </div>
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
-                <button onClick={() => dispatch(addFav("1"))} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add To Favourites</button>
+                <button onClick={() => dispatch(addFav(details[params.id]))} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add To Favourites</button>
               </div>
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
-                <button onClick={() => dispatch(addBasket("1"))} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
+                <button onClick={() => dispatch(addBasket(details[params.id]))} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
               </div>
 
             </div>
