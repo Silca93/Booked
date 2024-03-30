@@ -112,3 +112,15 @@ body {
   background-size: cover;
   
 }
+
+/* after below favourites */
+.Separation:after {
+  content: ''; /* Ensures the element renders */
+  position: absolute;
+  bottom: -5px; /* Positioned at the bottom */
+  left: 0; /* Span the entire width */
+  width: 100%;
+  height: 1px; /* Set the desired thickness */
+  background-color: #9c6644; /* Adjust color as needed */
+  opacity: 30%;
+}

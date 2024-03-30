@@ -33,33 +33,34 @@ export default function Shopping() {
             <div className="flex flex-col gap-4 w-[90%] h-full overflow-y-scroll">
               <h1 className="text-[2rem] font-bold px-2 py-2">My shopping cart</h1>
               {basket.map((element, index) => (
-                
-              <div key={index} className="flex justify-between px-5 w-full h-[8rem] ">
+               <div className="relative">
+                <div key={index} className="Separation flex justify-between px-5 w-full h-[8rem] ">
 
-                <div className="flex gap-2 w-[25rem]  h-full">
-                  <div className="w-[7rem] h-full  flex justify-center">
-                    <img src={element.image_url} alt="" height="50px" width="100px" />
+                  <div className="flex gap-2 w-[25rem]  h-full">
+                    <div className="w-[7rem] h-full  flex justify-center">
+                      <img src={element.image_url} alt="" height="50px" width="100px" />
+                    </div>
+                    <div className="flex flex-col gap-4">
+                      <h1 className="text-center line-clamp-1">{element.title}</h1>
+                      <p>{element.authors}</p>
+                      <p className="font-bold text-orange-500">{bookPrice}€</p>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-4">
-                    <h1 className="text-center line-clamp-1">{element.title}</h1>
-                    <p>{element.authors}</p>
-                    <p className="font-bold text-orange-500">{bookPrice}€</p>
+                  <div className="flex flex-col gap-5 w-[10rem] h-full  items-center justify-center">
+                    <div className="flex gap-2">
+                      <p className="text-gray-500">Remove</p>
+                      <button onClick={() => {dispatch(removeBasket(element.id)); console.log("removed");} }>
+                        <TfiTrash size={25}/>
+                      </button>
+                    </div>
+                    <div className="flex justify-center bg items-center gap-3 border-gray-300 border-[1px] w-full h-[3rem] bg-[#ebebe5]">
+                      <p>Qty: </p>
+                      <p>1</p>
+                    </div>
                   </div>
+                  
                 </div>
-                <div className="flex flex-col gap-5 w-[10rem] h-full  items-center justify-center">
-                  <div className="flex gap-2">
-                    <p className="text-gray-500">Remove</p>
-                    <button onClick={() => {dispatch(removeBasket(element.id)); console.log("removed");} }>
-                      <TfiTrash size={25}/>
-                    </button>
-                  </div>
-                  <div className="flex justify-center bg items-center gap-3 border-gray-300 border-[1px] w-full h-[3rem] bg-[#ebebe5]">
-                    <p>Qty: </p>
-                    <p>1</p>
-                  </div>
-                </div>
-                
-              </div>
+               </div> 
               ))
               }
             </div>

@@ -21,38 +21,40 @@ export default function page() {
     
 return (
 <div className="w-full h-[40rem] flex justify-center items-center">
-    <div className="w-[45rem] h-[35rem] rounded-md bg-slate-400 flex flex-col justify-center items-center relative">
+    <div className="w-[45rem] h-[35rem] rounded-sm bg-[#ebebe5] flex flex-col justify-center items-center relative">
         <h1 className="text-center mt-[-6rem] text-[2rem] font-bold">Added to Favourites</h1>
-        <div className="flex flex-col gap-3 w-[90%] h-[70%] bg-yellow-600  overflow-y-scroll">
+        <div className="flex flex-col gap-3 w-[90%] h-[70%] overflow-y-scroll">
         {
         faves.map((element, index) => (
+          <div className="relative">
+            <div key={index} className="Separation flex  justify-between px-5 w-full h-[8rem]">
 
-            <div key={index} className="flex justify-between px-5 bg-white w-full h-[8rem] ">
-
-            <div className="flex gap-2 w-[25rem]  h-full">
-                <div className="w-[7rem] h-full  flex justify-center">
-                <img src={element.image_url} alt="" height="50px" width="100px" />
+                <div className="flex gap-2 w-[25rem]  h-full">
+                    <div className="w-[7rem] h-full  flex justify-center">
+                    <img src={element.image_url} alt="" height="50px" width="100px" />
+                    </div>
+                    <div className="flex flex-col gap-4">
+                    <h1 className="text-center line-clamp-1">{element.title}</h1>
+                    <p>{element.authors}</p>
+                    <p className="font-bold text-orange-500">€</p>
+                    </div>
                 </div>
-                <div className="flex flex-col gap-4">
-                <h1 className="text-center line-clamp-1">{element.title}</h1>
-                <p>{element.authors}</p>
-                <p className="font-bold text-orange-500">€</p>
+                <div className="flex flex-col gap-5 w-[10rem] h-full  items-center justify-center">
+                    <div className="flex gap-2">
+                    <p className="text-gray-500">Unfavourite</p>
+                    <button onClick={() => {dispatch(removeFav(element.id)); console.log("removed");} }>
+                    <BsHeartbreakFill />
+                    </button>
+                    </div>
+                    <div className="flex justify-center bg items-center gap-3 border-gray-300 border-[1px] w-full h-[2rem] bg-black">
+                    <button onClick={()=> dispatch(addBasket(element))} className="text-white w-full h-full flex gap-3 justify-center items-center">Add to cart <HiOutlineShoppingCart size={20}/>
+                    </button>
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col gap-5 w-[10rem] h-full  items-center justify-center">
-                <div className="flex gap-2">
-                <p className="text-gray-500">Unfavourite</p>
-                <button onClick={() => {dispatch(removeFav(element.id)); console.log("removed");} }>
-                <BsHeartbreakFill />
-                </button>
-                </div>
-                <div className="flex justify-center bg items-center gap-3 border-gray-300 border-[1px] w-full h-[2rem] bg-black">
-                  <button onClick={()=> dispatch(addBasket(element))} className="text-white w-full h-full flex gap-3 justify-center items-center">Add to cart <HiOutlineShoppingCart size={20}/>
-                  </button>
-                </div>
-            </div>
             
             </div>
+            {/* <hr className="bg-[#d4a373] opacity-50 h-[2px]"></hr> */}
+         </div>   
         ))
             }
         </div>  
