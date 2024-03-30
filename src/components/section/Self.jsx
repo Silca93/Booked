@@ -44,7 +44,7 @@ export default function Self() {
             <div className="Health w-full h-[65%] bg-green-600 flex justify-center items-center overflow-hidden">
                 
             </div>
-            <p className="px-2">Meditation, Sport & Nutrition</p>
+            <p className="px-2 text-sm">Meditation, Sport & Nutrition</p>
             <p className="px-2">Michael Key</p>
             <p className="px-2 text-orange-400 text-xl"> {Math.floor(Math.random()*(20 - 5 + 1) + 5)} €</p>
             </div>       

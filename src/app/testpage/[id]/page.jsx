@@ -3,6 +3,7 @@ import React from 'react'
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchContent } from '@/Redux/slices/apiSlice' 
+import { randomPrice } from '@/Redux/slices/BookPrice'
 import { addBasket } from '@/Redux/slices/slices'
 import { addFav } from '@/Redux/slices/favSlice'
 import Link from "next/link"
@@ -15,11 +16,13 @@ export default function Details({params}) {
 
   useEffect(() => {
     dispatch(fetchContent())
-  }, [dispatch])
+  }, [])
 
   const details = useSelector((state) => state.content.contents)
   const isLoading = useSelector((state) => state.content.isLoading)
   const error = useSelector((state) => state.content.error)
+
+  const bookPrice = useSelector((state) => state.price.value)
 
 
 
@@ -42,9 +45,9 @@ export default function Details({params}) {
         <div className="w-1/2 h-full flex justify-center items-center">
           {
           details?
-         <div className="flex w-[20rem]">
+        <div className="flex w-[20rem]">
             <img src={details[params.id].image_url} alt="" width="100%" />
-         </div>
+        </div>
           // <Image
           // src={details[params.id].image_url}
           // alt="book cover"
@@ -80,7 +83,8 @@ export default function Details({params}) {
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
                 <button onClick={() => dispatch(addBasket(details[params.id]))} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
               </div>
-
+                {/* <p>{details[params.id].dataset.price}</p> */}
+                <p >Price: <span className="font-bold text-orange-500">{bookPrice}€ </span> </p>
             </div>
           </div>
           : "no existing data"

@@ -17,7 +17,7 @@ export const basketSlice = createSlice ({
         removeBasket: (state,action) => {
             const itemIndex = state.value.findIndex(book => book.id === action.payload); 
             if (itemIndex !== -1) {
-              state.value.splice(itemIndex, 1); 
+            state.value.splice(itemIndex, 1); 
             }   
 
         }

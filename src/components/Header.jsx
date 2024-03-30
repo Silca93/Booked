@@ -26,8 +26,6 @@ export default function Header() {
 
   const [show, setShow] = useState(false)
 
-  
-
   return (
     <div className='w-vw h-[10rem] flex flex-col justify-center items-center bg-[#f5f4f3] relative'>
         <div className="navbar w-[70%] h-[10%] bg-[#dedcd6] rounded-md mx-[6rem] flex items-center fixed top-1 z-30">
@@ -72,9 +70,11 @@ export default function Header() {
                     <CgProfile size={25} />
                     <p>Account</p>
                 </div>
-                <div className="w-[50%] h-full flex gap-2 justify-center items-center relative">
-                     <FaHeart size={25}/>
-                    <span className="mr-2">{favItems}</span>
+                <div className="w-[50%] h-full flex gap-2 justify-center items-center relative ">
+                    <Link href="/Favourites">
+                        <FaHeart size={25}/>
+                    </Link>
+                        <span className="mr-2">{favItems}</span>
                 <Link href="/Shopping">
                 <div className="flex gap-3 justify-start items-center pl-3 w-[5rem] h-[2.5rem] bg-white rounded-full border-black border-[1px]">
                     <SlBasket size={25} />
