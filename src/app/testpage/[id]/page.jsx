@@ -24,16 +24,22 @@ export default function Details({params}) {
 
   const bookPrice = useSelector((state) => state.price.value)
 //checking//
-  const checking = useSelector((state) => state.favourites.value)
+  
 
   const [fav, setFav] = useState(false)
+
+ 
   
   //array for the genres of books//
   const firstThreeGenres = details[params.id].genres.split(", ").slice(0, 3);
   
   
     if (isLoading) {
-      return 'loading...'
+      return (
+      <div className="w-full flex justify-center">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+      )
     }
   
     if (error) {
@@ -79,9 +85,8 @@ export default function Details({params}) {
                 <p>Format: {details[params.id].format}</p>
               </div>
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center  ">
-                <button onClick={() => {dispatch(addFav(details[params.id])), setFav(!fav), console.log(checking.length);} } className={`w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150`}>{fav? "Unfavourite" : "Add to Favourites"}</button>
+                <button onClick={() => {dispatch(fav ? removeFav(details[params.id].id) : addFav(details[params.id])); setFav(!fav);} } className={`w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150`}>{fav? "Unfavourite" : "Add to Favourites"}</button>
               </div>
-              <button onClick={() => {dispatch(removeFav(details[params.id].id)),console.log(checking.length) ;}}>Unfav</button>
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
                 <button onClick={() => {dispatch(addBasket(details[params.id]))}} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
               </div>

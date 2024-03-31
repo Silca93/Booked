@@ -24,6 +24,15 @@ const dispatch = useDispatch();
 const basketItems = useSelector((state) => state.basket.value.length);
 const favItems = useSelector((state) => state.favourites.value.length);
 
+const [isPulsing, setIsPulsing] = useState(false);
+
+const pulseIcon = () => {
+  setIsPulsing(!isPulsing);
+  setTimeout(() => setIsPulsing(false), 300);
+  // Your function call here (e.g., someAsyncFunction())
+   // Set pulse duration (1 second)
+};
+
 const [show, setShow] = useState(false)
 
 return (
@@ -72,9 +81,10 @@ return (
                 </div>
                 <div className="w-[50%] h-full flex gap-2 justify-center items-center relative ">
                     <Link href="/Favourites">
-                        <FaHeart size={25}/>
+                        <FaHeart className={isPulsing ? 'pulse' : ''} size={25}/>
                     </Link>
                         <span className="mr-2">{favItems}</span>
+                        <button onClick={() => pulseIcon()}>P</button>
                 <Link href="/Shopping">
                 <div className="flex gap-3 justify-center items-center w-[5rem] h-[2.5rem] bg-white rounded-md border-black border-[1px]">
                     <div className="cart w-[65%] h-full flex  justify-end items-center">
