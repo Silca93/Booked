@@ -14,7 +14,7 @@ export const favSlice = createSlice ({
             
         },
 
-        removeFav: (state,action) => {
+        removeFav: (state, action) => {
             const itemIndex = state.value.findIndex(book => book.id === action.payload); 
             if (itemIndex !== -1) {
             state.value.splice(itemIndex, 1); 
