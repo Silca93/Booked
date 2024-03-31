@@ -107,7 +107,9 @@ export default function Shopping() {
 
             <div className="flex w-full justify-center ">
               <div className="flex justify-center items-center mt-[8rem] w-[65%] h-[3rem] bg-orange-500 text-white">
-                <button className="w-full h-full">Checkout</button>
+                <Link href='/Summary'>
+                  <button className="w-full h-full">Confirm order</button>
+                </Link>
               </div>
             </div>
           </div>
