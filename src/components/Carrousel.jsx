@@ -9,7 +9,7 @@ export default function Carrousel() {
   return (
     <div className="w-full">
         <h1  className="text-center py-5 text-xl font-bold">Our Recommendations</h1>
-      <div className="carousel carousel-center max-w-full p-5 space-x-11 bg-amber-50 ">
+      <div className="carousel carousel-center max-w-full h-[23rem] p-5 space-x-11 bg-[#edede9] ">
         
         <div className="carousel-item">
           <img src={randomBook[0]} className="rounded-md" />

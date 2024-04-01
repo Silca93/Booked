@@ -2,7 +2,6 @@
 import React from 'react'
 import Link from 'next/link'
 
-
 //image//
 import Image from 'next/image';
 import { IoSearch } from "react-icons/io5";
@@ -13,25 +12,44 @@ import { FaHeart } from "react-icons/fa";
 
 import logo from './../assets/images/logos/BOOKED.png';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { setSearchVal } from '@/Redux/slices/searchSlice';
+import Searchbar from './Searchbar';
 
 
 export default function Header() {
 
 const dispatch = useDispatch();
+const [searchValue, setSearchValue] = useState('');
+
+const handleChange = (event) => {
+    setSearchValue(event.target.value);
+    dispatch(setSearchVal(event.target.value));
+}
+
+
 const basketItems = useSelector((state) => state.basket.value.length);
 const favItems = useSelector((state) => state.favourites.value.length);
+const previousLength = useRef(favItems);
+
+const pulseIcon = () => {
+    if (favItems)  
+    setIsPulsing(!isPulsing);
+    setTimeout(() => setIsPulsing(false), 300);
+  
+  };
+
+useEffect(() => {
+    if (previousLength.current !== favItems) {
+      pulseIcon();
+      previousLength.current = favItems; 
+    }
+  }, [favItems, pulseIcon]);
 
 const [isPulsing, setIsPulsing] = useState(false);
 
-const pulseIcon = () => {
-  setIsPulsing(!isPulsing);
-  setTimeout(() => setIsPulsing(false), 300);
-  // Your function call here (e.g., someAsyncFunction())
-   // Set pulse duration (1 second)
-};
+
 
 const [show, setShow] = useState(false)
 
@@ -54,7 +72,7 @@ return (
                 </Link> 
                 </div>
                 <div className="w-[50%] h-full flex justify-center items-center ">
-                    <div onClick={() => {setShow(!show);console.log(show);}} className="w-[85%] h-[60%]  cursor-pointer flex border-black border-[1px] rounded-md">
+                    <div onClick={() => {setShow(!show)}} className="w-[85%] h-[60%]  cursor-pointer flex border-black border-[1px] rounded-md">
                         <div className="flex justify-center items-center w-[25%] h-full flex-col gap-1">
                             <span className="w-[1.5rem] h-[2px] bg-black"></span>
                             <span className="w-[1.5rem] h-[2px] bg-black"></span>
@@ -71,7 +89,8 @@ return (
                 <IoSearch size={25} style={{color: 'white'}} />
                 </div>
                 <div className="w-[80%] h-full  rounded-r-md">
-                <input type="text" placeholder='Search' className="px-3 w-[100%] h-full rounded-r-md" />
+                <input onChange={handleChange} value={searchValue} type="text" placeholder='Search' className="px-3 w-[100%] h-full rounded-r-md" />
+                {/* <Searchbar/> */}
                 </div>
             </div>
             <div className="Right w-[30%] h-full  rounded-r-full flex">
@@ -81,10 +100,10 @@ return (
                 </div>
                 <div className="w-[50%] h-full flex gap-2 justify-center items-center relative ">
                     <Link href="/Favourites">
-                        <FaHeart className={isPulsing ? 'pulse' : ''} size={25}/>
+                        <FaHeart className={isPulsing ? 'pulse' : ''} size={27}/>
                     </Link>
                         <span className="mr-2">{favItems}</span>
-                        <button onClick={() => pulseIcon()}>P</button>
+                        
                 <Link href="/Shopping">
                 <div className="flex gap-3 justify-center items-center w-[5rem] h-[2.5rem] bg-white rounded-md border-black border-[1px]">
                     <div className="cart w-[65%] h-full flex  justify-end items-center">

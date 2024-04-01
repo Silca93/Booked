@@ -1,3 +1,4 @@
+
 import { Playfair } from "next/font/google";
 import "./globals.css";
 
@@ -11,6 +12,9 @@ export const metadata = {
   title: "Booked",
   description: "Where you book your books",
 };
+
+
+
 
 export default function RootLayout({ children }) {
   return (

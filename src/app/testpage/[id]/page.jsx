@@ -85,7 +85,7 @@ export default function Details({params}) {
                 <p>Format: {details[params.id].format}</p>
               </div>
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center  ">
-                <button onClick={() => {dispatch(fav ? removeFav(details[params.id].id) : addFav(details[params.id])); setFav(!fav);} } className={`w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150`}>{fav? "Unfavourite" : "Add to Favourites"}</button>
+                <button onClick={() => {dispatch(fav ? removeFav(details[params.id].id) : addFav(details[params.id])); setFav(!fav)} } className={`w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150`}>{fav? "Unfavourite" : "Add to Favourites"}</button>
               </div>
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
                 <button onClick={() => {dispatch(addBasket(details[params.id]))}} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
