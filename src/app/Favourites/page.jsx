@@ -13,7 +13,7 @@ import Link from 'next/link'
 
 
 
-export default function page() {
+export default function Page() {
 
     const dispatch = useDispatch();
     const faves = useSelector((state) => state.favourites.value)
