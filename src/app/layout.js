@@ -1,12 +1,12 @@
 
-import { Arapey } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 import ReduxProvider from "@/Redux/reduxProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const playfair = Arapey({ subsets: ["latin"], weight:['400'] });
+const playfair = Playfair_Display({ subsets: ["latin"], weight:['400'] });
 
 export const metadata = {
   title: "Booked",

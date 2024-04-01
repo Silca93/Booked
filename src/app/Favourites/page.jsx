@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { UseDispatch, useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addFav, removeFav } from '@/Redux/slices/favSlice'
 import { addBasket } from '@/Redux/slices/slices'
 

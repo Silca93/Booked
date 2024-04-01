@@ -19,7 +19,7 @@ export default function Bestsellers() {
         <div className="w-full h-[90%] flex flex-col pt-4  justify-start items-start gap-6">
          {
             newArray.map((element, index) => (
-            <div className="flex w-full h-[10rem]  justify-start items-center  gap-4 pl-[3rem]">
+            <div key ={index}className="flex w-full h-[10rem]  justify-start items-center  gap-4 pl-[3rem]">
                <h1 key={index} className="text-2xl font-medium">{index + 1}</h1>
                <img key={index} src={element.image_url} alt="" width="100px" />
                <div key={index} className="flex flex-col gap-2">
