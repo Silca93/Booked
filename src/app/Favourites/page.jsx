@@ -26,7 +26,7 @@ return (
         <div className="flex flex-col gap-3 w-[90%] h-[70%] overflow-y-scroll">
         {
         faves.map((element, index) => (
-          <div className="relative">
+          <div key={index} className="relative">
             <div key={index} className="Separation flex  justify-between px-5 w-full h-[8rem]">
 
                 <div className="flex gap-2 w-[25rem]  h-full">
