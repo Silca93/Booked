@@ -72,7 +72,7 @@ return (
                 </Link> 
                 </div>
                 <div className="w-[50%] h-full flex justify-center items-center ">
-                    <div onClick={() => {setShow(!show)}} className="w-[85%] h-[60%]  cursor-pointer flex border-black border-[1px] rounded-md">
+                    <div onClick={() => {setShow(!show)}} className="w-[85%] h-[60%]  cursor-pointer flex border-orange-500 border-[1px] rounded-md">
                         <div className="flex justify-center items-center w-[25%] h-full flex-col gap-1">
                             <span className="w-[1.5rem] h-[2px] bg-black"></span>
                             <span className="w-[1.5rem] h-[2px] bg-black"></span>
@@ -89,7 +89,7 @@ return (
                 <IoSearch size={25} style={{color: 'white'}} />
                 </div>
                 <div className="w-[80%] h-full  rounded-r-md">
-                <input onChange={handleChange} value={searchValue} type="text" placeholder='Search' className="px-3 w-[100%] h-full rounded-r-md" />
+                <input onChange={handleChange} value={searchValue} type="text" placeholder='Under construction...' className="px-3 w-[100%] h-full rounded-r-md" />
                 {/* <Searchbar/> */}
                 </div>
             </div>

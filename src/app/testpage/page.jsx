@@ -73,7 +73,7 @@ function Api() {
         <div className="w-full justify-center flex flex-wrap gap-5">
 
           {
-          booksToDisplay.slice(0, 18).map((element, id) => {
+          booksToDisplay.map((element, id) => {
             return(
               <div key={id}  className="card w-[15rem] h-[25rem] flex flex-col  bg-[#ebebe5] rounded-md overflow-hidden">
                 <Link  href={`/testpage/${searchIndex(element)}`}>
@@ -98,7 +98,7 @@ function Api() {
                       </div>
                       <div className="right w-1/2 h-full flex justify-center items-center">
                         <div className="flex w-[4rem] h-[2rem] bg-black rounded-sm border-white border-[2px]">
-                          <button className="w-full h-full text-white">Buy</button>
+                          <button className="w-full h-full text-white">View</button>
                         </div>
                       </div>
                   </div>
