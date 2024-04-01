@@ -75,8 +75,8 @@ function Api() {
           {
           booksToDisplay.slice(0, 18).map((element, id) => {
             return(
-            <Link  href={`/testpage/${searchIndex(element)}`}>
               <div key={id}  className="card w-[15rem] h-[25rem] flex flex-col  bg-[#ebebe5] rounded-md overflow-hidden">
+                <Link  href={`/testpage/${searchIndex(element)}`}>
                   <div className="w-full h-[18rem]  flex justify-center">
                       <img src={element.image_url} alt="" width="100%"  />
                       {/* <Image
@@ -102,8 +102,8 @@ function Api() {
                         </div>
                       </div>
                   </div>
+                </Link> 
               </div>
-            </Link> 
             )
           })
           
