@@ -6,7 +6,7 @@ import ReduxProvider from "@/Redux/reduxProvider";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const playfair = Playfair({ subsets: ["latin"] });
+const playfair = Playfair({ subsets: ["latin-ext"] });
 
 export const metadata = {
   title: "Booked",

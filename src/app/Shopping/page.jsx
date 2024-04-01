@@ -79,9 +79,9 @@ export default function Shopping() {
                     {/* <button onClick={() => {dispatch(removeBasket(element.id)); console.log("removed");} }>
                       <TfiTrash size={25}/>
                     </button> */}
-                  <p>1 x {element.title}</p>
+                  <p key={index}>1 x {element.title}</p>
                   </div>
-                  <p className="font-bold text-orange-500">{bookPrice}€</p>
+                  <p key={index} className="font-bold text-orange-500">{bookPrice}€</p>
                 </div>
               ))
             }
