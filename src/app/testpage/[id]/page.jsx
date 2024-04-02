@@ -75,7 +75,7 @@ export default function Details({params}) {
             <p className="text-2xl font-bold">{details[params.id].title}</p>
             <p>By {details[params.id].authors}</p>
             <div className="flex w-full gap-5 pr-5 text-sm">
-              <p>Rating: {details[params.id].rating}/5 ({details[params.id].rating_count.toLocaleString()})</p>
+              <p>Rating: {details[params.id].rating} /5 ({details[params.id].rating_count.toLocaleString()})</p>
               <p>Edition: {details[params.id].edition == ""? "Unknown" : details[params.id].edition}</p>
               <p>Page count: {details[params.id].num_pages}</p>
               <p>Genre: {firstThreeGenres.join(", ")}</p>
@@ -95,6 +95,10 @@ export default function Details({params}) {
                 <button onClick={() => {dispatch(addBasket(details[params.id]))}} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
               </div>
                 {/* <p>{details[params.id].dataset.price}</p> */}
+                {/* <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center">
+                <p>Format: {details[params.id].format}</p>
+              </div> */}
+              
                 <p >Price: <span className="font-bold text-orange-500">{(details[params.id].rating*3).toFixed(2)}€ </span> </p>
                 {/* <p>Price: {(element.rating * 3).toFixed(2) + "€"}</p> */}
             </div>
