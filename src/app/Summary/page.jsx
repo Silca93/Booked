@@ -21,10 +21,10 @@ export default function Summary() {
                 </div>
                 <div className="flex w-full h-[90%] bg-[#f5f4f3] flex-col items-center py-5">
                     <div className="flex flex-col w-1/2 h-[60%]  gap-3">
-                        <p className="text-xl text-start font-bold"><span>A confirmartion email has been sent to you.</span></p>
-                        <p className="text-xl text-start font-bold">Order number:<span className="font-light">120-2354-423245</span></p>
-                        <p className="text-xl text-start font-bold">Delivery address:<span className="font-light"> Pl. de la Minoterie 10, 1080 Molenbeek-Saint-Jean</span> </p>
-                        <p className="text-xl text-start font-bold">Estimated delivery date:<span className="font-light"> {`${day}-${month}-${year}`} </span> </p>
+                        <p className="text-lg text-start font-bold"><span>A confirmartion email has been sent to you.</span></p>
+                        <p className="text-lg text-start font-bold">Order number:<span className="font-light">120-2354-423245</span></p>
+                        <p className="text-lg text-start font-bold">Delivery address:<span className="font-light"> Pl. de la Minoterie 10, 1080 Molenbeek-Saint-Jean</span> </p>
+                        <p className="text-lg text-start font-bold">Estimated delivery date:<span className="font-light"> {`${day}-${month}-${year}`} </span> </p>
                         
                     </div>
                     <ul className="timeline">

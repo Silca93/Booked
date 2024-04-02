@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import { useEffect } from 'react'
 import { basketSlice } from '@/Redux/slices/slices'
 import { removeBasket } from '@/Redux/slices/slices'
 import { randomPrice } from '@/Redux/slices/BookPrice'
@@ -17,9 +18,14 @@ export default function Shopping() {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.value)
 
-
-
   const totalPrice = basket.reduce((total, book) => total + (book.rating*3), 0);
+
+  useEffect(() => {
+    // to recalculate finalPrice whenever basket length changes
+    const newTotalPrice = basket.reduce((total, book) => total + (book.rating * 3), 0);
+    setFinalPrice(newTotalPrice);
+  }, [basket])
+
   const [finalPrice, setFinalPrice] = useState(totalPrice)
   const [coupon, setCoupon] = useState('')
   const discount = (totalPrice*0.9)
@@ -106,7 +112,7 @@ export default function Shopping() {
 
             <hr className="bg-gray-400 h-[2px] mr-3"></hr>
 
-            <div className="flex justify-center py-3">
+           <div className="flex justify-center py-3">
               <div className="flex w-[70%] h-[2.5rem] bg-white">
                 <input onChange={(e)=> setCoupon(e.target.value.toLocaleLowerCase())} placeholder='Enter coupon code' className="input w-[85%] h-full"></input>
                 <div  className="send w-[15%] h-full bg-black text-white">
@@ -122,13 +128,16 @@ export default function Shopping() {
               <h1 className="text-orange-500 font-bold text-xl">{finalPrice.toFixed(2)}€</h1>
             </div>
 
-            <div className="flex w-full justify-center ">
-              <div className="flex justify-center items-center mt-[8rem] w-[65%] h-[3rem] bg-orange-500 text-white">
-                <Link href='/Summary'>
-                  <button className="w-full h-full">Confirm order</button>
-                </Link>
+            <Link href='/Summary'>
+              <div className="flex w-full justify-center items-center mt-5">
+              {basket.length > 0 ?
+                <div className="flex justify-center items-center  w-[65%] h-[3rem] bg-orange-500 text-white">
+                    <button className="w-full h-full">Confirm order</button>
+                </div>
+                :''
+              }
               </div>
-            </div>
+            </Link>
           </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ import { fetchContent } from '@/Redux/slices/apiSlice'
 import { randomPrice } from '@/Redux/slices/BookPrice'
 import { addBasket } from '@/Redux/slices/slices'
 import { addFav, removeFav } from '@/Redux/slices/favSlice'
+
 import Link from "next/link"
 import Image from 'next/image'
 
@@ -21,7 +22,8 @@ export default function Details({params}) {
   const details = useSelector((state) => state.content.contents)
   const isLoading = useSelector((state) => state.content.isLoading)
   const error = useSelector((state) => state.content.error)
-
+  
+  const connected = useSelector((state) => state.login.value.logged)
   const bookPrice = useSelector((state) => state.price.value)
 //checking//
   
@@ -84,9 +86,11 @@ export default function Details({params}) {
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center">
                 <p>Format: {details[params.id].format}</p>
               </div>
+              {connected&&
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center  ">
                 <button onClick={() => {dispatch(fav ? removeFav(details[params.id].id) : addFav(details[params.id])); setFav(!fav)} } className={`w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150`}>{fav? "Unfavourite" : "Add to Favourites"}</button>
               </div>
+              }
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
                 <button onClick={() => {dispatch(addBasket(details[params.id]))}} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
               </div>

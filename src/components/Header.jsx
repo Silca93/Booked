@@ -9,8 +9,11 @@ import { SlBasket } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { CiPower } from "react-icons/ci";
 
 import logo from './../assets/images/logos/booked.png';
+
+import { logIn } from '@/Redux/slices/loginSlice';
 
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,6 +24,7 @@ import Searchbar from './Searchbar';
 export default function Header() {
 
 const connected = useSelector((state) => state.login.value.logged)
+const name = useSelector((state) => state.login.value.username)
 const dispatch = useDispatch();
 const [searchValue, setSearchValue] = useState('');
 
@@ -101,11 +105,19 @@ return (
                     <details className="dropdown flex gap-2">
                        
                         
-                        <summary className="m-1 btn rounded-md border-black border-[1px]"><CgProfile size={25} />Account</summary>
+                        <summary className="m-1 btn rounded-md border-black border-[1px] "><CgProfile size={25} style={connected? {color:'#F97316'}: ""}  />{connected? name : "Account"}</summary>
                         
                         <ul className="p-2 shadow menu dropdown-content z-[1]  bg-white rounded-md w-52">
-                            <li><Link href="/login">Login</Link></li>
-                            <li><Link href="/register">Register </Link></li>
+                            {!connected&&
+                            <>
+                                <li><Link href="/login">Login</Link></li>
+                                <li><Link href="/register">Register </Link></li>
+                            </>
+                            }
+                            {connected&&
+                            <li> <button onClick={() =>dispatch(logIn()) }>Disconnect</button></li>
+                                   
+                            }
                         </ul>
                     </details>
                         {/* <div className="flex w-[6rem] h-[2.5rem]  justify-center items-center border-black border-[1px] rounded-md">
@@ -129,8 +141,9 @@ return (
                         </div>
                     </Link>
                     :
-                    <div className="w-[4rem] h-[2.5rem] border-black border-[1px] flex justify-center items-center">
-                        <input type="checkbox" className="toggle toggle-error" checked />
+                    <div className="w-[4rem] h-[2.5rem]  flex justify-center items-center">
+                        <CiPower size={25} style ={{color: 'red'}}/>
+
                     </div>
                     }
                         
