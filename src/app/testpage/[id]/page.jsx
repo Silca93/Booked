@@ -91,7 +91,8 @@ export default function Details({params}) {
                 <button onClick={() => {dispatch(addBasket(details[params.id]))}} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
               </div>
                 {/* <p>{details[params.id].dataset.price}</p> */}
-                <p >Price: <span className="font-bold text-orange-500">{bookPrice}€ </span> </p>
+                <p >Price: <span className="font-bold text-orange-500">{(details[params.id].rating*3).toFixed(2)}€ </span> </p>
+                {/* <p>Price: {(element.rating * 3).toFixed(2) + "€"}</p> */}
             </div>
           </div>
           : "no existing data"

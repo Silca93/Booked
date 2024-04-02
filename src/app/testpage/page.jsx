@@ -22,6 +22,7 @@ function Api() {
     const isLoading = useSelector((state) => state.content.isLoading)
     const error = useSelector((state) => state.content.error)
     const bookPrice = useSelector((state) => state.price.value)
+    
 
     //Searchbar usestates//
     const searching = useSelector((state) => state.search.searchVal)
@@ -73,7 +74,7 @@ function Api() {
         <div className="w-full justify-center flex flex-wrap gap-5">
 
           {
-          booksToDisplay.map((element, id) => {
+          booksToDisplay.slice(0, 28).map((element, id) => {
             return(
               <div key={id}  className="card w-[15rem] h-[25rem] flex flex-col  bg-[#ebebe5] rounded-md overflow-hidden">
                 <Link  href={`/testpage/${searchIndex(element)}`}>
@@ -87,14 +88,14 @@ function Api() {
                       /> */}
                   </div>
                   <div className="w-full h-[2rem]  flex flex-col justify-start items-center">
-                      <h1 className="text-lg line-clamp-1 px-4">{element.title}</h1>
+                      <h1 className="text-lg line-clamp-1 px-4 font-bold">{element.title}</h1>
                   </div>
                   <div className="w-full h-[2rem] ">
                       <p className="text-start px-2">{element.authors}</p>
                   </div>
                   <div className="w-full h-[3rem]  flex">
                       <div className="left w-1/2 h-full flex justify-center items-center">
-                        <p>Price: {bookPrice}€</p>                          
+                       <p>Price: {(element.rating * 3).toFixed(2) + "€"}</p>
                       </div>
                       <div className="right w-1/2 h-full flex justify-center items-center">
                         <div className="flex w-[4rem] h-[2rem] bg-black rounded-sm border-white border-[2px]">

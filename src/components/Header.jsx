@@ -20,6 +20,7 @@ import Searchbar from './Searchbar';
 
 export default function Header() {
 
+const connected = useSelector((state) => state.login.value.logged)
 const dispatch = useDispatch();
 const [searchValue, setSearchValue] = useState('');
 
@@ -95,14 +96,43 @@ return (
             </div>
             <div className="Right w-[30%] h-full  rounded-r-full flex">
                 <div className="w-[50%] h-full flex gap-2 justify-end items-center">
-                    <CgProfile size={25} />
-                    <p>Account</p>
+                    {/* <Link href="/login"> */}
+
+                    <details className="dropdown flex gap-2">
+                       
+                        
+                        <summary className="m-1 btn rounded-md border-black border-[1px]"><CgProfile size={25} />Account</summary>
+                        
+                        <ul className="p-2 shadow menu dropdown-content z-[1]  bg-white rounded-md w-52">
+                            <li><Link href="/login">Login</Link></li>
+                            <li><Link href="/register">Register </Link></li>
+                        </ul>
+                    </details>
+                        {/* <div className="flex w-[6rem] h-[2.5rem]  justify-center items-center border-black border-[1px] rounded-md">
+
+                        
+                        <p>Account</p>
+                        </div> */}
+                    {/* </Link> */}
                 </div>
                 <div className="w-[50%] h-full flex gap-2 justify-center items-center relative ">
+                    {connected ?
                     <Link href="/Favourites">
-                        <FaHeart className={isPulsing ? 'pulse' : ''} size={27}/>
+                   
+                        <div className="flex w-[4rem] h-[2.5rem] bg-white rounded-md justify-center items-center border-black border-[1px]">
+                            <div className="flex w-[65%] h-full justify-center items-center">
+                               <FaHeart className={isPulsing ? 'pulse' : ''} size={27}/>
+                            </div>
+                            <div className="amount w-[35%] h-full flex justify-center items-center bg-black rounded-r-md">
+                                <span className="text-red-500 text-lg font-bold">{favItems}</span>
+                            </div>
+                        </div>
                     </Link>
-                        <span className="mr-2">{favItems}</span>
+                    :
+                    <div className="w-[4rem] h-[2.5rem] border-black border-[1px] flex justify-center items-center">
+                        <input type="checkbox" className="toggle toggle-error" checked />
+                    </div>
+                    }
                         
                 <Link href="/Shopping">
                 <div className="flex gap-3 justify-center items-center w-[5rem] h-[2.5rem] bg-white rounded-md border-black border-[1px]">

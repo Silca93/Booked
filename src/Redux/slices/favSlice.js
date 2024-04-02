@@ -5,7 +5,8 @@ export const favSlice = createSlice ({
     name:"favourites",
 
     initialState:{
-        value:[]
+        value:[],
+        input:""
     },
 
     reducers :{

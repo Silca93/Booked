@@ -4,6 +4,7 @@ import { basketSlice } from '@/Redux/slices/slices'
 import { removeBasket } from '@/Redux/slices/slices'
 import { randomPrice } from '@/Redux/slices/BookPrice'
 import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
 import { TfiTrash } from "react-icons/tfi";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
@@ -15,7 +16,22 @@ import Image from 'next/image'
 export default function Shopping() {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.value)
-  const bookPrice = useSelector((state) => state.price.value)
+
+
+
+  const totalPrice = basket.reduce((total, book) => total + (book.rating*3), 0);
+  const [finalPrice, setFinalPrice] = useState(totalPrice)
+  const [coupon, setCoupon] = useState('')
+  const discount = (totalPrice*0.9)
+
+  const checkDiscount = () => {
+    if (coupon === "molengeek") {
+      console.log("discount activated");
+      setFinalPrice(discount)
+
+    }
+  }
+  
   return (
     <div className="w-full flex">
         <div className="Left w-[60%] h-[45rem] bg-[#F0F0F0]">
@@ -43,7 +59,7 @@ export default function Shopping() {
                     <div className="flex flex-col gap-4">
                       <h1 className="text-center line-clamp-1">{element.title}</h1>
                       <p>{element.authors}</p>
-                      <p className="font-bold text-orange-500">{bookPrice}€</p>
+                      <p className="font-bold text-orange-500">{(element.rating*3).toFixed(2)}€</p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-5 w-[10rem] h-full  items-center justify-center">
@@ -55,6 +71,7 @@ export default function Shopping() {
                     </div>
                     <div className="flex justify-center bg items-center gap-3 border-gray-300 border-[1px] w-full h-[3rem] bg-[#ebebe5]">
                       <p>Qty: </p>
+                      {/* <p>{basket.length}</p> */}
                       <p>1</p>
                     </div>
                   </div>
@@ -81,7 +98,7 @@ export default function Shopping() {
                     </button> */}
                   <p key={index}>1 x {element.title}</p>
                   </div>
-                  <p key={index} className="font-bold text-orange-500">{bookPrice}€</p>
+                  <p key={index} className="font-bold text-orange-500">{(element.rating*3).toFixed(2)}€</p>
                 </div>
               ))
             }
@@ -91,18 +108,18 @@ export default function Shopping() {
 
             <div className="flex justify-center py-3">
               <div className="flex w-[70%] h-[2.5rem] bg-white">
-                <input placeholder='Enter coupon code' className="input w-[85%] h-full"></input>
-                <div className="send w-[15%] h-full bg-black text-white">
-                  <button  className="w-full h-full text-white">Redeem</button>
+                <input onChange={(e)=> setCoupon(e.target.value.toLocaleLowerCase())} placeholder='Enter coupon code' className="input w-[85%] h-full"></input>
+                <div  className="send w-[15%] h-full bg-black text-white">
+                  <button onClick={() => checkDiscount()}  className="w-full h-full text-white">Redeem</button>
                 </div>
               </div>
             </div>
 
             <hr className="bg-gray-400 h-[2px] mr-3"></hr>
 
-            <div className="flex w-full justify-between px-3 py-3">
-              <h1>Total</h1>
-              <h1>$ Price</h1>
+            <div className="flex w-full justify-between px-5 py-3">
+              <h1 className="text-orange-500 font-bold text-xl">Total</h1>
+              <h1 className="text-orange-500 font-bold text-xl">{finalPrice.toFixed(2)}€</h1>
             </div>
 
             <div className="flex w-full justify-center ">
