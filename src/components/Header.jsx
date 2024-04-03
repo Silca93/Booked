@@ -42,8 +42,7 @@ const pulseIcon = () => {
     if (favItems)  
     setIsPulsing(!isPulsing);
     setTimeout(() => setIsPulsing(false), 300);
-  
-  };
+    };
 
 useEffect(() => {
     if (previousLength.current !== favItems) {
@@ -77,7 +76,7 @@ return (
                 </Link> 
                 </div>
                 <div className="w-[50%] h-full flex justify-center items-center ">
-                    <div onClick={() => {setShow(!show)}} className="w-[85%] h-[60%]  cursor-pointer flex border-orange-500 border-[1px] rounded-md">
+                    <div onClick={() => {setShow(!show)}} className="w-[85%] h-[55%] cursor-pointer flex border-orange-500 border-[1px] rounded-md">
                         <div className="flex justify-center items-center w-[25%] h-full flex-col gap-1">
                             <span className="w-[1.5rem] h-[2px] bg-black"></span>
                             <span className="w-[1.5rem] h-[2px] bg-black"></span>
@@ -85,6 +84,7 @@ return (
                         </div>  
                         <div className="flex justify-center  items-center w-[75%] h-full px-1 py-1">
                             <p className="text-[13px]">All Categories</p>
+                            
                         </div>
                     </div>
                 </div>
@@ -100,40 +100,34 @@ return (
             </div>
             <div className="Right w-[30%] h-full  rounded-r-full flex">
                 <div className="w-[50%] h-full flex gap-2 justify-end items-center">
-                    {/* <Link href="/login"> */}
-
+                    <label className="cursor-pointer grid place-items-center">
+                        <input type="checkbox" value="synthwave" className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"/>
+                        <svg className="col-start-1 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+                        <svg className="col-start-2 row-start-1 stroke-base-100 fill-base-100" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </label>
                     <details className="dropdown flex gap-2">
-                       
                         
                         <summary className="m-1 btn rounded-md border-black border-[1px] "><CgProfile size={25} style={connected? {color:'#F97316'}: ""}  />{connected? name : "Account"}</summary>
                         
                         <ul className="p-2 shadow menu dropdown-content z-[1]  bg-white rounded-md w-52">
                             {!connected&&
                             <>
-                                <li><Link href="/login">Login</Link></li>
-                                <li><Link href="/register">Register </Link></li>
+                            <li><Link href="/login">Login</Link></li>
+                            <li><Link href="/register">Register </Link></li>
                             </>
                             }
                             {connected&&
                             <li> <button onClick={() =>dispatch(logIn()) }>Disconnect</button></li>
-                                   
                             }
                         </ul>
                     </details>
-                        {/* <div className="flex w-[6rem] h-[2.5rem]  justify-center items-center border-black border-[1px] rounded-md">
-
-                        
-                        <p>Account</p>
-                        </div> */}
-                    {/* </Link> */}
                 </div>
                 <div className="w-[50%] h-full flex gap-2 justify-center items-center relative ">
                     {connected ?
                     <Link href="/Favourites">
-                   
                         <div className="flex w-[4rem] h-[2.5rem] bg-white rounded-md justify-center items-center border-black border-[1px]">
                             <div className="flex w-[65%] h-full justify-center items-center">
-                               <FaHeart className={isPulsing ? 'pulse' : ''} size={27}/>
+                                <FaHeart className={isPulsing ? 'pulse' : ''} size={27}/>
                             </div>
                             <div className="amount w-[35%] h-full flex justify-center items-center bg-black rounded-r-md">
                                 <span className="text-red-500 text-lg font-bold">{favItems}</span>
@@ -143,7 +137,6 @@ return (
                     :
                     <div className="w-[4rem] h-[2.5rem]  flex justify-center items-center">
                         <CiPower size={25} style ={{color: 'red'}}/>
-
                     </div>
                     }
                         
