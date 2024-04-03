@@ -24,7 +24,7 @@ export default async function Home() {
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between px-5 bg-[#ebebe5]">
-      <div className="my-5">
+      <div className="px-5">
         <Carrousel/>
       </div>
       <h1 className="text-xl font-bold my-[3rem] mb-0">Our complete Collection</h1>
@@ -32,8 +32,8 @@ export default async function Home() {
         <Api/>
       </div>
       <h1 className="text-xl font-bold my-[3rem]">Get inspired</h1> 
-      <div className="w-[90%] flex gap-2  ">
-        <div className="left w-1/2">
+      <div className="w-[90%] flex gap-2 max-[768px]:flex-col max-[768px]:w-full max-[768px]:items-center">
+        <div className="left w-1/2 max-[768px]:w-[90%]">
           <div className="top w-full my-2">
             <Bestbooks/>
           </div>
@@ -41,13 +41,13 @@ export default async function Home() {
             <Greatreads/>
           </div>
         </div>
-        <div className="right w-1/2">
+        <div className="right w-1/2 max-[768px]:w-[90%]">
           <div className="top w-full my-2">
             <Getlost/>
           </div>
           <div className="bot w-full my-2 flex gap-2">
             <div className="left w-1/2">
-             <Kidsread/>
+              <Kidsread/>
             </div>
             <div className="right w-1/2">
               <Bestart/>
@@ -55,12 +55,12 @@ export default async function Home() {
           </div>
         </div>
       </div> 
-      <div className="w-[90%] flex justify-center gap-3 my-[2rem] bg-[#F3F1EE]">
-        <div className="left w-[70%] flex flex-col gap-3">
+      <div className="w-[90%] flex justify-center gap-3 my-[2rem] bg-[#F3F1EE] max-[1350px]:flex-col">
+        <div className="left w-[70%] flex flex-col gap-3 max-[1350px]:w-full">
           <Little/>
           <Self/>
         </div>
-        <div className="right w-[30%] flex flex-col">
+        <div className="right w-[30%] flex flex-col max-[1350px]:w-full">
           <Bestsellers/>
         </div>
       </div>

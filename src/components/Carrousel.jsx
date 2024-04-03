@@ -7,45 +7,45 @@ export default function Carrousel() {
   const randomBook = bookArray.sort(() => Math.floor(Math.random() - 0.5))
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden">
         <h1  className="text-center py-5 text-xl font-bold">Our Recommendations</h1>
-      <div className="carousel carousel-center max-w-full h-[23rem] p-5 space-x-11 bg-[#202020] ">
+      <div className="carousel carousel-center h-[21rem] max-w-full p-4 space-x-8 bg-neutral rounded-box  ">
         
         <div className="carousel-item">
-          <img src={randomBook[0]} className="rounded-md" />
+          <img src={randomBook[0]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-        <img src={randomBook[1]} className="rounded-md" />
+        <img src={randomBook[1]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-        <img src={randomBook[2]} className="rounded-md" />
+        <img src={randomBook[2]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-        <img src={randomBook[3]} className="rounded-md" />
+        <img src={randomBook[3]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-        <img src={randomBook[4]} className="rounded-md" />
+        <img src={randomBook[4]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-        <img src={randomBook[5]} className="rounded-md" />
+        <img src={randomBook[5]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-        <img src={randomBook[6]} className="rounded-md" />
+        <img src={randomBook[6]} className="rounded-md overflow-hidden" />
         </div>
         <div className="carousel-item">
-        <img src={randomBook[7]} className="rounded-md" />
+        <img src={randomBook[7]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-          <img src={randomBook[8]} className="rounded-md" />
+          <img src={randomBook[8]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-          <img src={randomBook[9]} className="rounded-md" />
+          <img src={randomBook[9]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-          <img src={randomBook[10]} className="rounded-md" />
+          <img src={randomBook[10]} className="rounded-md overflow-hidden" />
         </div> 
         <div className="carousel-item">
-          <img src={randomBook[11]} className="rounded-md" />
+          <img src={randomBook[11]} className="rounded-md overflow-hidden" />
         </div> 
       </div>
       

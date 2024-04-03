@@ -37,7 +37,7 @@ return (
                     <div className="flex flex-col gap-4">
                     <h1 className="text-center line-clamp-1">{element.title}</h1>
                     <p>{element.authors}</p>
-                    <p className="font-bold text-orange-500">{element.rating*3.} €</p>
+                    <p className="font-bold text-orange-500">{(element.rating*3).toFixed(2)} €</p>
                     </div>
                 </div>
                 <div className="flex flex-col gap-5 w-[10rem] h-full  items-center justify-center">
