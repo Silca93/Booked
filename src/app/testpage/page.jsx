@@ -29,34 +29,20 @@ function Api() {
     //Searchbar usestates//
     const searching = useSelector((state) => state.search.searchVal)
 
-   const [count, setCount] = useState(false)
-
     
-    // const filterByGenres = () => {
-    //   // Check if there is an active search query
-    //   if (searchVal.length > 0) {
-    //     // Filter by both search query and genre
-    //     const Filtered = data.filter((book) =>
-    //       book.title.toLowerCase().includes(searchVal.toLowerCase()) &&
-    //       book.genres.includes("Fantasy")
-    //     );
-    //     setFilteredBooks(Filtered);
-    //   } else {
-    //     // If there is no search query, filter only by genre
-    //     const Filtered = data.filter((book) => book.genres.includes("Fantasy"));
-    //     setFilteredBooks(Filtered);
-    //   }
-    // };
-
-
-   
+    
+    
+    
+    
     //copy array of my data API that will be used to filter with searchbar"
     const [filteredBooks, setFilteredBooks] = useState(data);
+    
+    const [filter, setFilter] = useState(false)
 
     const filterByGenres = (genre) => {
 
       const Filtered = data.filter((book) => book.genres.includes(genre))
-      setCount(!count)
+      setFilter(true)
       setFilteredBooks(Filtered);
       console.log(Filtered);
     }
@@ -88,22 +74,13 @@ function Api() {
    
   }, [searchVal] );
 
-  // useEffect(() => {
-  //   const filterByGenres() => {
-  //   const Filtered = data.filter((book) => book.genres.includes("Fantasy"))
-  //   }
-  // }, [input]);
-  //!filter by genres//
-  // const filterByGenres = () => {
-  //   const Filtered = data.filter((book) => book.genres.some(genres => genres === "Fantasy"))
   
-  //   setFilteredBooks(Filtered);
-  // }
+  //!filter by genres//
 
 
+  //if the searchbar is empty, we will map data instead of filteredBooks. Otherwise the mapping will be empty upon page reload. ALso filter needs to be false in order to map data, otherwise my filter by genres buttons don't do anything. 
 
-  //if the searchbar is empty, we will map data instead of filteredBooks. Otherwise the mapping will be empty upon page reload.
-  const booksToDisplay = searchVal.length === 0 && !count? data : filteredBooks
+  const booksToDisplay = searchVal.length === 0 && !filter? data : filteredBooks
   // const booksToDisplay = filteredBooks
 
  
@@ -125,23 +102,23 @@ function Api() {
         
         </div>
          <div className={`w-full ${show? "h-[3rem] text-black border-[1px]" : "h-0 text-transparent border-none"}  bg-white duration-300 flex gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300`}>
-            <button className="hover:underline hover:underline-offset-4">Sci-fi</button>
-            <button onClick={() => filterByGenres("Fantasy")} className="hover:underline hover:underline-offset-4">Fantasy</button>
-            <button className="hover:underline hover:underline-offset-4">Thriller</button>
-            <button className="hover:underline hover:underline-offset-4">Historical</button>
-            <button className="hover:underline hover:underline-offset-4">Adult</button>
-            <button className="hover:underline hover:underline-offset-4">Children</button>
-            <button className="hover:underline hover:underline-offset-4">Classics</button>
-            <button className="hover:underline hover:underline-offset-4">Philosophy</button>
-            <button className="hover:underline hover:underline-offset-4">Academic</button>
-            <button className="hover:underline hover:underline-offset-4">Fiction</button>
-            <button className="hover:underline hover:underline-offset-4">Horror</button>
-            <button className="hover:underline hover:underline-offset-4">Young Adult</button>
-            <button className="hover:underline hover:underline-offset-4">Crime</button>
-            <button className="hover:underline hover:underline-offset-4">Adventure</button>
-            <button className="hover:underline hover:underline-offset-4">Psychology</button>
-            <button className="hover:underline hover:underline-offset-4">Biography</button>
-            <button className="hover:underline hover:underline-offset-4">Cultural</button>
+            <button onClick={() => filterByGenres("Science Fiction")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Sci-fi</button>
+            <button onClick={() => filterByGenres("Fantasy")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Fantasy</button>
+            <button onClick={() => filterByGenres("Thriller")}className="hover:underline hover:underline-offset-4 hover:text-orange-500">Thriller</button>
+            <button onClick={() => filterByGenres("Historical")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Historical</button>
+            <button onClick={() => filterByGenres("Adult")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Young Adult</button>
+            <button onClick={() => filterByGenres("Childrens")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Children</button>
+            <button onClick={() => filterByGenres("Classics")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Classics</button>
+            <button onClick={() => filterByGenres("Philosophy")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Philosophy</button>
+            <button onClick={() => filterByGenres("Academic")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Academic</button>
+            <button onClick={() => filterByGenres("Fiction")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Fiction</button>
+            <button onClick={() => filterByGenres("Horror")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Horror</button>
+            <button onClick={() => filterByGenres("Crime")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Crime</button>
+            <button onClick={() => filterByGenres("Adventure")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Adventure</button>
+            <button onClick={() => filterByGenres("Psychology")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Psychology</button>
+            <button onClick={() => filterByGenres("Biography")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Biography</button>
+            <button onClick={() => filterByGenres("Cultural")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Cultural</button>
+            <button onClick={() => filterByGenres("War")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">War</button>
         </div>
         <div className="flex w-full h-[5rem] justify-center items-center">
           <Searchbar searchVal={searchVal} setSearchVal={setSearchVal}/>

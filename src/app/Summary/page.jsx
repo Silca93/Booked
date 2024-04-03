@@ -13,7 +13,7 @@ export default function Summary() {
 
     return (
     <div className="w-full flex justify-center items-center">
-        <div className="w-[60rem] h-[30rem]  flex justify-center">
+        <div className="w-[60rem] h-[35rem]  flex justify-center">
             <div className="w-full h-full flex flex-col py-4 items-center">
                 <div className="flex w-full h-[10%] bg-[#ebebe2] justify-center items-center gap-3">
                     <BsBookmarkCheckFill style={{color:'green', fontSize:'30px'}} />

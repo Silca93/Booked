@@ -27,11 +27,11 @@ export default async function Home() {
       <div className="px-5">
         <Carrousel/>
       </div>
-      <h1 className="text-xl font-bold my-[3rem] mb-0">Our complete Collection</h1>
+      <h1 className="text-2xl font-bold my-[5rem] mb-0">Discover our collection</h1>
       <div className="w-full flex py-[3rem]  justify-center items-center gap-5 flex-wrap mt-4 mb-4 bg-[#dedcd6] ">
         <Api/>
       </div>
-      <h1 className="text-xl font-bold my-[3rem]">Get inspired</h1> 
+      <h1 className="text-2xl font-bold my-[3rem]">Get inspired</h1> 
       <div className="w-[90%] flex gap-2 max-[768px]:flex-col max-[768px]:w-full max-[768px]:items-center">
         <div className="left w-1/2 max-[768px]:w-[90%]">
           <div className="top w-full my-2">

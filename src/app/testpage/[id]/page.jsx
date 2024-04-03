@@ -73,7 +73,7 @@ export default function Details({params}) {
           
           <div className="flex flex-col gap-4 items-start ">
             <p className="text-2xl font-bold">{details[params.id].title}</p>
-            <p>By {details[params.id].authors}</p>
+            <p>By:  {details[params.id].authors}</p>
             <div className="flex w-full gap-5 pr-5 text-sm">
               <p>Rating: {details[params.id].rating} /5 ({details[params.id].rating_count.toLocaleString()})</p>
               <p>Edition: {details[params.id].edition == ""? "Unknown" : details[params.id].edition}</p>
@@ -82,10 +82,11 @@ export default function Details({params}) {
             </div>
             <hr className="h-[1px]"></hr>
             <p>{details[params.id].description}</p>
-            <div className="flex gap-3 w-full pr-5">
-              <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center">
-                <p>Format: {details[params.id].format}</p>
+              <div className="flex flex-col w-[17rem] h-[2.5rem]  items-start justify-center gap-2 my-3">
+                <p className="font-bold">Format: <span className="font-light">&nbsp;{details[params.id].format}</span></p>
+                <p >Price: <span className="font-bold text-orange-500">&nbsp;{(details[params.id].rating*3).toFixed(2)}€ </span> </p>
               </div>
+            <div className="flex gap-3 w-full pr-5">
               {connected&&
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center  ">
                 <button onClick={() => {dispatch(fav ? removeFav(details[params.id].id) : addFav(details[params.id])); setFav(!fav)} } className={`w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150`}>{fav? "Unfavourite" : "Add to Favourites"}</button>
@@ -94,12 +95,7 @@ export default function Details({params}) {
               <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center ">
                 <button onClick={() => {dispatch(addBasket(details[params.id]))}} className="w-full h-full bg-black text-white hover:bg-white hover:text-black duration-150">Add to Cart</button>
               </div>
-                {/* <p>{details[params.id].dataset.price}</p> */}
-                {/* <div className="flex w-[9rem] h-[2rem] border-[1px] border-black items-center justify-center">
-                <p>Format: {details[params.id].format}</p>
-              </div> */}
-              
-                <p >Price: <span className="font-bold text-orange-500">{(details[params.id].rating*3).toFixed(2)}€ </span> </p>
+                
                 {/* <p>Price: {(element.rating * 3).toFixed(2) + "€"}</p> */}
             </div>
           </div>

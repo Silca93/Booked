@@ -8,6 +8,8 @@ import { IoSearch } from "react-icons/io5";
 import { SlBasket } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 import { FaRegHeart } from "react-icons/fa";
+import { BsArrowThroughHeart } from "react-icons/bs";
+
 import { FaHeart } from "react-icons/fa";
 import { CiPower } from "react-icons/ci";
 
@@ -127,10 +129,10 @@ return (
                     <Link href="/Favourites">
                         <div className="flex w-[4rem] h-[2.5rem] bg-white rounded-md justify-center items-center border-black border-[1px]">
                             <div className="flex w-[65%] h-full justify-center items-center">
-                                <FaHeart className={isPulsing ? 'pulse' : ''} size={27}/>
+                                <BsArrowThroughHeart className={isPulsing ? 'pulse' : ''} size={20}/>
                             </div>
                             <div className="amount w-[35%] h-full flex justify-center items-center bg-black rounded-r-md">
-                                <span className="text-red-500 text-lg font-bold">{favItems}</span>
+                                <span className="text-red-500 text-lg font-bold pb-2">{favItems}</span>
                             </div>
                         </div>
                     </Link>
@@ -146,14 +148,14 @@ return (
                     <SlBasket size={25} />
                     </div>
                     <div className="amount w-[35%] h-full flex justify-start items-center">
-                        <span className="text-orange-500 text-lg font-bold">{basketItems > 0 && basketItems}</span>
+                        <span className="text-orange-500 text-lg font-bold pb-1">{basketItems > 0 && basketItems}</span>
                     </div>
                 </div>
                 </Link>
                 </div>
             </div>
         </div>
-        <div className={`Slidedown fixed  top-[6rem] w-[67%] ${show? "h-[3rem] text-black border-[1px]" : "h-0 text-transparent border-none"}  bg-white duration-300 flex gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300`}>
+        <div className={`Slidedown fixed  top-[4.8rem] w-[67%] ${show? "h-[3rem] text-black border-[1px]" : "h-0 text-transparent border-none"}  bg-white duration-300 flex gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300`}>
             <button className="hover:underline hover:underline-offset-4">Sci-fi</button>
             <button className="hover:underline hover:underline-offset-4">Fantasy</button>
             <button className="hover:underline hover:underline-offset-4">Thriller</button>

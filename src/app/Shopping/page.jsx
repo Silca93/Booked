@@ -55,7 +55,7 @@ export default function Shopping() {
             <div className="flex flex-col gap-4 w-[90%] h-full overflow-y-scroll">
               <h1 className="text-[2rem] font-bold px-2 py-2">My shopping cart</h1>
               {basket.map((element, index) => (
-               <div key={index} className="relative">
+              <div key={index} className="relative">
                 <div key={index} className="Separation flex justify-between px-5 w-full h-[8rem] ">
 
                   <div className="flex gap-2 w-[25rem]  h-full">
@@ -83,7 +83,7 @@ export default function Shopping() {
                   </div>
                   
                 </div>
-               </div> 
+              </div> 
               ))
               }
             </div>

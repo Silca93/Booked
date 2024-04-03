@@ -8,7 +8,7 @@ export default function Carrousel() {
 
   return (
     <div className="w-full overflow-hidden">
-        <h1  className="text-center py-5 text-xl font-bold">Our Recommendations</h1>
+        <h1  className="text-center py-5 text-2xl font-bold mt-5">Our Recommendations</h1>
       <div className="carousel carousel-center h-[21rem] max-w-full p-4 space-x-8 bg-neutral rounded-box  ">
         
         <div className="carousel-item">
