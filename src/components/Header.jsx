@@ -59,7 +59,7 @@ const [show, setShow] = useState(false)
 
 return (
     <div className='w-vw h-[10rem] flex flex-col justify-center items-center bg-[#f5f4f3] relative'>
-        <div className="navbar w-[70%] h-[10%] bg-[#dedcd6] rounded-md mx-[6rem] flex items-center fixed top-1 z-30 border-[1px] border-black border-opacity-30">
+        <div className="navbar w-[70%] h-[8%] bg-[#dedcd6] rounded-md mx-[6rem] flex items-center fixed top-1 z-30 border-[1px] border-black border-opacity-30">
             <div className="Left w-[30%] h-full  rounded-l-full flex items-center">
                 <div className="flex items-center justify-center  w-[40%] h-full  rounded-l-full">
                     <Image
