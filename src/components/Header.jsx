@@ -13,8 +13,6 @@ import { BsArrowThroughHeart } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import { CiPower } from "react-icons/ci";
 
-import logo from './../assets/images/logos/booked.png';
-
 import { logIn } from '@/Redux/slices/loginSlice';
 
 import { useState, useEffect, useRef } from 'react';
