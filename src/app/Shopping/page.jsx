@@ -42,7 +42,7 @@ export default function Shopping() {
     <div className="w-full flex max-[768px]:flex-col">
         <div className="Left w-[60%] h-[45rem] bg-[#F0F0F0] max-[768px]:w-full max-[768px]:h-[39rem]">
           <div className="flex w-full h-[5%]  justify-start px-3">
-            <div className="flex w-[9rem] h-full  justify-center items-center hover:border-[1px] hover:border-black">
+            <div className="flex w-[9rem] h-full my-3  justify-center items-center hover:border-[1px] hover:border-black">
               <Link href="/">
                 <button className="flex justify-center items-center gap-2 text-gray-600">
                   <MdOutlineKeyboardBackspace />
@@ -132,7 +132,7 @@ export default function Shopping() {
               <div className="flex w-full justify-center items-center mt-5">
               {basket.length > 0 ?
                 <div className="flex justify-center items-center  w-[65%] h-[3rem] bg-orange-500 text-white">
-                    <button className="w-full h-full">Confirm order</button>
+                    <button className="w-full h-full hover:bg-white hover:text-black duration-150">Confirm order</button>
                 </div>
                 :''
               }

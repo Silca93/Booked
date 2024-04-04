@@ -109,9 +109,9 @@ return (
                     </label>
                     <details className="dropdown flex gap-1 ">
                         
-                        <summary className="m-1 btn rounded-md min-h-[2rem] h-[2.5rem] max-h-[5rem]    border-black border-[1px] max-[1400px]:w-[4rem] max-[1100px]:w-[3rem] max-[1100px]:h-[2rem] max-[768px]:h-[2.5rem] max-[768px]:w-[4.5rem]">
+                        <summary className={`m-1 btn rounded-md min-h-[2rem] h-[2.5rem] max-h-[5rem]   ${connected? "border-green-500" : "border-black"}  border-[1px] max-[1400px]:w-[4rem] max-[1100px]:w-[3rem] max-[1100px]:h-[2rem] max-[768px]:h-[2.5rem] max-[768px]:w-[4.5rem]`}>
                             <div className="flex gap-1 max-[1100px]:flex-col max-[1100px]:items-center max-[768px]:flex-row ">
-                                <CgProfile className="pl-2 max-[1100px]:pl-0 max-[1100px]:pt-1 mb-[-2px] max-[768px]:pt-0" size={16} style={connected? {color:'#F97316'}: ""}  />
+                                <CgProfile className=" max-[1100px]:pl-0 max-[1100px]:pt-1 mb-[-2px] max-[768px]:pt-0" size={16} style={connected? {color:'#F97316'}: ""}  />
                                 <span className="max-[1400px]:text-[10px] pr-2  max-[1100px]:text-[8px] max-[1100px]:pr-0 max-[1000px]:mb-3 max-[768px]:mb-0 max-[768px]:text-[10px]">{connected? name : "Account"}</span>
                             </div>
                         </summary>

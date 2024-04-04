@@ -15,11 +15,11 @@ export default function Summary() {
     <div className="w-full flex justify-center items-center">
         <div className="w-[50rem] h-[35rem]  flex justify-center">
             <div className="w-full h-full flex flex-col py-4 items-center">
-                <div className="flex w-full h-[10%] bg-[#ebebe2] justify-center items-center gap-3">
+                <div className="flex w-full h-[10%] bg-[#ebebe2] justify-center items-center gap-3 mt-5">
                     <BsBookmarkCheckFill style={{color:'green', fontSize:'30px'}} />
                     <h1 className="text-3xl font-bold max-[768px]:text-2xl max-[520px]:text-lg">Thank you, your order has been placed.</h1>
                 </div>
-                <div className="flex w-full h-[90%] bg-[#f5f4f3] flex-col items-center py-5">
+                <div className="flex w-full h-[90%] bg-[#f5f4f3] flex-col items-center py-5 mb-5">
                     <div className="flex flex-col w-1/2 h-[60%]  gap-3">
                         <p className="text-lg text-start font-bold max-[550px]:text-[13px]"><span>A confirmartion email has been sent to you.</span></p>
                         <p className="text-lg text-start font-bold max-[550px]:text-[13px]">Order number:<span className="font-light"> 120-2354-423245</span></p>

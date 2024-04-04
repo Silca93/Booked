@@ -32,15 +32,15 @@ return (
             <div key={index} className="Separation flex  justify-between px-5 w-full h-[8rem]">
                 <div className="flex gap-2 w-[25rem]  h-full">
                     <div className="w-[7rem] h-full  flex justify-center">
-                    <img src={element.image_url} alt="" height="50px" width="100px" />
+                    <img src={element.image_url} alt=""  style={{ width: '70px', height: '100px' }} />
                     </div>
-                    <div className="flex flex-col gap-4">
-                    <h1 className="text-center line-clamp-1">{element.title}</h1>
-                    <p>{element.authors}</p>
-                    <p className="font-bold text-orange-500">{(element.rating*3).toFixed(2)} €</p>
+                    <div className="flex flex-col gap-4 w-[10rem] max-[570px]:w-[7rem] max-[500px]:w-[5rem] ">
+                        <h1 className="text-center line-clamp-1 max-[768px]:text-start">{element.title}</h1>
+                        <p className="text-gray-600">{element.authors}</p>
+                        <p className="font-bold text-orange-500 ">{(element.rating*3).toFixed(2)} €</p>
                     </div>
                 </div>
-                <div className="flex flex-col gap-5 w-[10rem] h-full  items-center justify-center">
+                <div className="flex flex-col gap-5 w-[15rem]  h-full  items-center justify-center">
                     <div className="flex gap-2">
                         <button className="flex gap-2" onClick={() => {dispatch(removeFav(element.id)); console.log("removed");} }>
                         <p className="text-gray-500">Unfavourite</p>
@@ -48,7 +48,7 @@ return (
                         </button>
                     </div>
                     <div className="flex justify-center bg items-center gap-3 border-gray-300 border-[1px] w-full h-[2rem] bg-black">
-                    <button onClick={()=> dispatch(addBasket(element))} className="text-white w-full h-full flex gap-3 justify-center items-center max-[570px]:text-sm">Add to cart <HiOutlineShoppingCart size={20}/>
+                    <button onClick={()=> dispatch(addBasket(element))} className="text-white w-full h-full flex gap-3 justify-center items-center hover:bg-white hover:text-black max-[570px]:text-sm">Add to cart <HiOutlineShoppingCart size={20}/>
                     </button>
                     </div>
                 </div>
