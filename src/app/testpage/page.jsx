@@ -65,7 +65,8 @@ function Api() {
       }
       
       const filteredBySearch = data.filter((book) =>
-        book.title.toLowerCase().includes(searchVal.toLowerCase())
+        book.title.toLowerCase().includes(searchVal.toLowerCase())||book.authors.toLowerCase().includes(searchVal.toLowerCase())
+
       );
       setFilteredBooks(filteredBySearch);
     };
