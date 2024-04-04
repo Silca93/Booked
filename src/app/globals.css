@@ -32,6 +32,15 @@ body {
   }
 }
 
+
+.Booked {
+  background-image: url(./../assets/images/logos/BOOKED.png);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
 .Bestbooks {
   background-image: url(./../assets/images/images/Bestbooks.jpg);
   background-size: cover;
@@ -139,6 +148,9 @@ body {
   }
   .Greatreads {
     background-position: 0px 0px !important;
+  }
+  .Booked {
+    background-size: 100%;
   }
 
   
