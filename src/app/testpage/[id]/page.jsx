@@ -50,9 +50,9 @@ export default function Details({params}) {
   
   
   return (
-    <div className="w-screen h-[35rem] flex">
+    <div className="w-screen h-[40rem] my-5 flex max-[768px]:flex-col max-[768px]:h-[63rem]">
 
-        <div className="w-1/2 h-full flex justify-center items-center">
+        <div className="w-[40%] h-full  flex justify-center items-center max-[1200px]:w-[40%] max-[768px]:w-full ">
           {
           details?
         <div className="flex w-[20rem]">
@@ -67,24 +67,24 @@ export default function Details({params}) {
           : "no existing data"
           }
         </div>
-        <div className="w-1/2 h-full flex justify-center items-center px-5">
+        <div className="w-[60%]   flex justify-center items-center px-5 py-5 max-[1200px]:w-[60%] max-[768px]:w-full">
           {
           details?
           
           <div className="flex flex-col gap-4 items-start ">
             <p className="text-2xl font-bold">{details[params.id].title}</p>
-            <p>By:  {details[params.id].authors}</p>
+            <p><span className="font-bold">By:</span>   <span className="text-gray-600">{details[params.id].authors}</span></p>
             <div className="flex w-full gap-5 pr-5 text-sm">
-              <p>Rating: {details[params.id].rating} /5 ({details[params.id].rating_count.toLocaleString()})</p>
-              <p>Edition: {details[params.id].edition == ""? "Unknown" : details[params.id].edition}</p>
-              <p>Page count: {details[params.id].num_pages}</p>
-              <p>Genre: {firstThreeGenres.join(", ")}</p>
+              <p><span className="font-bold">Rating:</span> <span className="text-yellow-600"> {details[params.id].rating} /5 </span> ({details[params.id].rating_count.toLocaleString()}) </p>
+              <p><span className="font-bold">Edition: </span> {details[params.id].edition == ""? "Unknown" : details[params.id].edition}</p>
+              <p><span className="font-bold">Page count </span>: {details[params.id].num_pages}</p>
+              <p><span className="font-bold">Genre: </span> {firstThreeGenres.join(", ")}</p>
             </div>
             <hr className="h-[1px]"></hr>
-            <p>{details[params.id].description}</p>
+            <p className="max-[550px]:text-[12px]">{details[params.id].description}</p>
               <div className="flex flex-col w-[17rem] h-[2.5rem]  items-start justify-center gap-2 my-3">
                 <p className="font-bold">Format: <span className="font-light">&nbsp;{details[params.id].format}</span></p>
-                <p >Price: <span className="font-bold text-orange-500">&nbsp;{(details[params.id].rating*3).toFixed(2)}€ </span> </p>
+                <p><span className="font-bold">Price:</span> <span className="font-bold text-orange-500">&nbsp;{(details[params.id].rating*3).toFixed(2)}€ </span> </p>
               </div>
             <div className="flex gap-3 w-full pr-5">
               {connected&&
