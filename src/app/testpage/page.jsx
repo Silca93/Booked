@@ -99,24 +99,24 @@ function Api() {
           <button className="w-[8rem] bg-orange-500 text-white h-[2rem] flex justify-center items-center rounded-md" onClick={() => setShow(!show)}>Filter genres <IoMdArrowDropdown />
           </button>
         </div>
-         <div className={`w-full ${show? "h-[3rem] max-[1560px]:h-[5rem] max-[825px]:h-[7rem] max-[576px]:h-[9rem] max-[471px]:h-[11.5rem] max-[393px]:h-[14rem] text-black border-[1px]" : "h-0 text-transparent border-none"}  bg-white duration-300 flex-wrap flex  gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300 px-2`}>
-            <button onClick={() => filterByGenres("Science Fiction")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Sci-fi</button>
-            <button onClick={() => filterByGenres("Fantasy")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Fantasy</button>
-            <button onClick={() => filterByGenres("Thriller")}className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Thriller</button>
-            <button onClick={() => filterByGenres("Historical")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Historical</button>
-            <button onClick={() => filterByGenres("Adult")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Young Adult</button>
-            <button onClick={() => filterByGenres("Childrens")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Children</button>
-            <button onClick={() => filterByGenres("Classics")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Classics</button>
-            <button onClick={() => filterByGenres("Philosophy")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Philosophy</button>
-            <button onClick={() => filterByGenres("Academic")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Academic</button>
-            <button onClick={() => filterByGenres("Fiction")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Fiction</button>
-            <button onClick={() => filterByGenres("Horror")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Horror</button>
-            <button onClick={() => filterByGenres("Crime")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Crime</button>
-            <button onClick={() => filterByGenres("Adventure")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Adventure</button>
-            <button onClick={() => filterByGenres("Psychology")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Psychology</button>
-            <button onClick={() => filterByGenres("Biography")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Biography</button>
-            <button onClick={() => filterByGenres("Cultural")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">Cultural</button>
-            <button onClick={() => filterByGenres("War")} className="hover:underline hover:underline-offset-4 hover:text-orange-500 px-2 text-start">War</button>
+         <div className={`w-full ${show? "h-[3rem] max-[1560px]:h-[5rem] max-[825px]:h-[7rem] max-[576px]:h-[9rem] max-[471px]:h-[11.5rem] max-[393px]:h-[14rem] text-black border-[1px]" : "h-0 text-transparent border-none opacity-0"}  bg-white duration-300 flex-wrap flex  gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300 px-2`}>
+            <button onClick={() => filterByGenres("Science Fiction")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2  ">Sci-fi</button>
+            <button onClick={() => filterByGenres("Fantasy")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Fantasy</button>
+            <button onClick={() => filterByGenres("Thriller")}className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Thriller</button>
+            <button onClick={() => filterByGenres("Historical")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Historical</button>
+            <button onClick={() => filterByGenres("Adult")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Young Adult</button>
+            <button onClick={() => filterByGenres("Childrens")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Children</button>
+            <button onClick={() => filterByGenres("Classics")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Classics</button>
+            <button onClick={() => filterByGenres("Philosophy")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Philosophy</button>
+            <button onClick={() => filterByGenres("Academic")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Academic</button>
+            <button onClick={() => filterByGenres("Fiction")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Fiction</button>
+            <button onClick={() => filterByGenres("Horror")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Horror</button>
+            <button onClick={() => filterByGenres("Crime")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Crime</button>
+            <button onClick={() => filterByGenres("Adventure")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Adventure</button>
+            <button onClick={() => filterByGenres("Psychology")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Psychology</button>
+            <button onClick={() => filterByGenres("Biography")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Biography</button>
+            <button onClick={() => filterByGenres("Cultural")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Cultural</button>
+            <button onClick={() => filterByGenres("War")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">War</button>
         </div>
         <div className="flex w-full h-[5rem] justify-center items-center">
           <Searchbar searchVal={searchVal} setSearchVal={setSearchVal}/>
