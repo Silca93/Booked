@@ -21,10 +21,10 @@ export default function Page() {
     
 return (
 <div className="w-full h-[40rem] flex flex-col justify-center items-center my-5">
-        <div className="flex h-[10%] w-[45rem] bg-[#f5f4f3] justify-center items-center rounded-t-md">
-            <h1 className="text-center  text-[2rem] font-bold">Added to Favourites</h1>
+        <div className="flex h-[10%] w-[45rem] bg-[#f5f4f3] justify-center items-center rounded-t-md max-[768px]:w-[35rem] max-[565px]:w-[27rem] max-[500px]:w-[24rem]">
+            <h1 className="text-center text-[2rem] font-bold max-[768px]:text-[1.5rem]">Added to Favourites</h1>
         </div>
-    <div className="w-[45rem] h-[35rem] rounded-sm bg-[#ebebe5] flex flex-col justify-center items-center relative">
+    <div className="w-[45rem] h-[35rem] rounded-sm bg-[#ebebe5] flex flex-col justify-center items-center relative max-[768px]:w-[35rem] max-[565px]:w-[27rem] max-[500px]:w-[24rem]">
         <div className="flex flex-col gap-3 w-[90%] h-[70%] overflow-y-scroll">
         {
         faves.map((element, index) => (
@@ -48,7 +48,7 @@ return (
                         </button>
                     </div>
                     <div className="flex justify-center bg items-center gap-3 border-gray-300 border-[1px] w-full h-[2rem] bg-black">
-                    <button onClick={()=> dispatch(addBasket(element))} className="text-white w-full h-full flex gap-3 justify-center items-center">Add to cart <HiOutlineShoppingCart size={20}/>
+                    <button onClick={()=> dispatch(addBasket(element))} className="text-white w-full h-full flex gap-3 justify-center items-center max-[570px]:text-sm">Add to cart <HiOutlineShoppingCart size={20}/>
                     </button>
                     </div>
                 </div>
