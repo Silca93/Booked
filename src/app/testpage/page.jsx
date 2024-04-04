@@ -96,10 +96,8 @@ function Api() {
       return (
       <div className="flex flex-col gap-5 w-full">
         <div className="flex w-full justify-center">
-
-        <button className="w-[8rem] bg-orange-500 text-white h-[2rem] flex justify-center items-center rounded-sm" onClick={() => setShow(!show)}>Filter genres <IoMdArrowDropdown />
-        </button>
-        
+          <button className="w-[8rem] bg-orange-500 text-white h-[2rem] flex justify-center items-center rounded-md" onClick={() => setShow(!show)}>Filter genres <IoMdArrowDropdown />
+          </button>
         </div>
          <div className={`w-full ${show? "h-[3rem] text-black border-[1px]" : "h-0 text-transparent border-none"}  bg-white duration-300 flex gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300`}>
             <button onClick={() => filterByGenres("Science Fiction")} className="hover:underline hover:underline-offset-4 hover:text-orange-500">Sci-fi</button>
