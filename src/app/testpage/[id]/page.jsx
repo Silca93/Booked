@@ -81,7 +81,7 @@ export default function Details({params}) {
               <p><span className="font-bold">Genre: </span> {firstThreeGenres.join(", ")}</p>
             </div>
             <hr className="h-[1px]"></hr>
-            <p className="max-[550px]:text-[12px]">{details[params.id].description.slice(0, 1000)}</p>
+            <p className="max-[550px]:text-[12px]">{details[params.id].description.slice(0, 800)}</p>
               <div className="flex flex-col w-[17rem] h-[2.5rem]  items-start justify-center gap-2 my-3">
                 <p className="font-bold">Format: <span className="font-light">&nbsp;{details[params.id].format}</span></p>
                 <p><span className="font-bold">Price:</span> <span className="font-bold text-orange-500">&nbsp;{(details[params.id].rating*3).toFixed(2)}€ </span> </p>
