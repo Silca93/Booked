@@ -50,7 +50,7 @@ export default function Details({params}) {
   
   
   return (
-    <div className="w-screen h-[40rem] my-5 flex max-[768px]:flex-col max-[768px]:h-[63rem]">
+    <div className="w-vw-[40rem] my-5 flex max-[768px]:flex-col max-[768px]:h-[63rem]">
 
         <div className="w-[40%] h-full  flex justify-center items-center max-[1200px]:w-[40%] max-[768px]:w-full ">
           {
