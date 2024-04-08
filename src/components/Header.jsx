@@ -70,7 +70,7 @@ return (
                     height="100%"
                     /> */}
                 </div>
-                <div className="w-[20%]  h-full flex justify-center items-center max-[768px]:w-[30%]">
+                <div className="w-[20%]  mx-2  h-full flex justify-center items-center max-[768px]:w-[30%]">
                 <Link href="/">
                     <p className="font-bold">HOME</p>
                 </Link> 
