@@ -9,7 +9,7 @@ export default function Carrousel() {
   return (
     <div className="w-full overflow-hidden">
         <h1  className="text-center py-5 text-2xl font-bold mt-5">Our Recommendations</h1>
-      <div className="carousel carousel-center h-[21rem] max-w-full p-4 space-x-8 bg-neutral rounded-box  ">
+      <div className="carousel carousel-center h-[21rem] max-w-full p-4 max-[500px]:space-x-7 bg-neutral rounded-box  space-x-9 ">
         
         <div className="carousel-item">
           <img src={randomBook[0]} className="rounded-md overflow-hidden" />

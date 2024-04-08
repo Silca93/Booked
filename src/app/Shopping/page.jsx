@@ -40,7 +40,7 @@ export default function Shopping() {
   
   return (
     <div className="w-full flex max-[768px]:flex-col">
-        <div className="Left w-[60%] h-[45rem] bg-[#F0F0F0] max-[768px]:w-full max-[768px]:h-[39rem]">
+        <div className="Left w-[60%] h-[45rem] bg-[#F0F0F0] max-[768px]:w-full max-[768px]:h-[32rem]">
           <div className="flex w-full h-[5%]  justify-start px-3">
             <div className="flex w-[9rem] h-full my-3  justify-center items-center hover:border-[1px] hover:border-black">
               <Link href="/">
@@ -56,9 +56,9 @@ export default function Shopping() {
               <h1 className="text-[2rem] font-bold px-2 py-2 max-[768px]:text-[1.5rem]">My shopping cart</h1>
               {basket.map((element, index) => (
               <div key={index} className="relative">
-                <div key={index} className="Separation flex justify-between px-5 w-full h-[8rem] ">
+                <div key={index} className="Separation flex justify-between px-5 w-full h-[8rem]">
 
-                  <div className="flex gap-2 w-[25rem]  h-full">
+                  <div className="flex gap-2 w-[25rem] h-full">
                     <div className="w-[7rem] h-full  flex justify-center">
                       <img src={element.image_url} alt="" height="50px" width="100px" />
                     </div>

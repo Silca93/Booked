@@ -50,7 +50,7 @@ export default function Details({params}) {
   
   
   return (
-    <div className="w-vw-[40rem] my-5 flex max-[768px]:flex-col max-[768px]:h-[63rem]">
+    <div className="w-vw h-[35rem]  my-5 flex max-[768px]:flex-col max-[768px]:h-[63rem]">
 
         <div className="w-[40%] h-full  flex justify-center items-center max-[1200px]:w-[40%] max-[768px]:w-full ">
           {
@@ -67,7 +67,7 @@ export default function Details({params}) {
           : "no existing data"
           }
         </div>
-        <div className="w-[60%]   flex justify-center items-center px-5 py-5 max-[1200px]:w-[60%] max-[768px]:w-full">
+        <div className="w-[60%] h-full  flex justify-center items-center px-5 py-5 max-[1200px]:w-[60%] max-[768px]:w-full">
           {
           details?
           
