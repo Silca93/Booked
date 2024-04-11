@@ -40,11 +40,12 @@ function Api() {
     const [filter, setFilter] = useState(false)
 
     const filterByGenres = (genre) => {
+      if (!data || !data.length) return;
 
-      const Filtered = data.filter((book) => book.genres.includes(genre))
+      const filtered = data.filter((book) => (book.genres && book.genres.includes(genre)))
       setFilter(true)
-      setFilteredBooks(Filtered);
-      console.log(Filtered);
+      console.log(filtered);
+      setFilteredBooks(filtered);
     }
     //used to toggle my genres bar//
     const [show, setShow] = useState(false) 
@@ -65,7 +66,7 @@ function Api() {
       }
       
       const filteredBySearch = data.filter((book) =>
-        book.title.toLowerCase().includes(searchVal.toLowerCase())||book.authors.toLowerCase().includes(searchVal.toLowerCase())
+       (book.title && book.title.toLowerCase().includes(searchVal.toLowerCase())||book.authors.toLowerCase().includes(searchVal.toLowerCase()))
 
       );
       setFilteredBooks(filteredBySearch);
@@ -125,7 +126,7 @@ function Api() {
         <div className="w-full justify-center flex flex-wrap gap-5">
 
           {
-          booksToDisplay.slice(0, 28).map((element, id) => {
+          booksToDisplay.slice(0, 20).map((element, id) => {
             return(
               <div key={id}  className="card w-[15rem] h-[25rem] flex flex-col  bg-[#ebebe5] rounded-md overflow-hidden">
                 <Link  href={`/testpage/${searchIndex(element)}`}>

@@ -109,9 +109,9 @@ return (
                 <div className="w-[80%] h-full  rounded-r-md max-[1400px]:h-[70%]">
                 <input onChange={handleChange} value={searchValue} type="text" placeholder='Under construction...' className="px-3 w-[100%] h-full rounded-r-md max-[1000px]:text-sm" />
                 {/* <Searchbar/> */}
-                </div>
+                </div> 
             </div>
-            <div className="Right w-[30%] h-full  flex gap-1 max-[768px]:w-[50%] ">
+            <div className="Right w-[30%] h-full  flex gap-1 max-[768px]:w-[50%]">
                 <div className="w-[40%]   h-full flex justify-end items-center max-[768px]:justify-start">
                     
                     <details className="dropdown flex gap-1 ">
