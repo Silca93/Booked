@@ -74,14 +74,16 @@ export default function Details({params}) {
           <div className="flex flex-col gap-4 items-start ">
             <p className="text-2xl font-bold">{details[params.id].title}</p>
             <p><span className="font-bold">By:</span>   <span className="text-gray-600">{details[params.id].authors}</span></p>
-            <div className="flex w-full gap-5 pr-5 text-sm">
-              <p><span className="font-bold">Rating:</span> <span className="text-yellow-600"> {details[params.id].rating} /5 </span> ({details[params.id].rating_count.toLocaleString()}) </p>
+            <div className="flex w-full gap-5 pr-5 text-sm ">
+              <div className="w-[10rem] h-[2.5rem] bg-black px-1 flex justify-center rounded-sm max-[1500px]:h-[3rem] max-[1000px]:h-[3.8rem] max-[1000px]:w-[11rem] max-[1100px]:text-[10px]">
+                <p className='text-center text-white max-[1100px]:text-[10px]'><span className="font-bold text-center max-[1100px]:text-[12px]">Rating :</span> <span className="text-yellow-300"> {details[params.id].rating} /5 </span> ({details[params.id].rating_count.toLocaleString()}) </p>
+              </div>
               <p><span className="font-bold">Edition: </span> {details[params.id].edition == ""? "Unknown" : details[params.id].edition}</p>
-              <p><span className="font-bold">Page count </span>: {details[params.id].num_pages}</p>
+              <p><span className="font-bold">Page count: </span> {details[params.id].num_pages}</p>
               <p><span className="font-bold">Genre: </span> {firstThreeGenres.join(", ")}</p>
             </div>
             <hr className="h-[1px]"></hr>
-            <p className="max-[550px]:text-[12px]">{details[params.id].description.slice(0, 700)}</p>
+            <p className="max-[550px]:text-[12px]">{details[params.id].description.slice(0, 700)+ "..."}</p>
               <div className="flex flex-col w-[17rem] h-[2.5rem]  items-start justify-center gap-2 my-3">
                 <p className="font-bold">Format: <span className="font-light">&nbsp;{details[params.id].format}</span></p>
                 <p><span className="font-bold">Price:</span> <span className="font-bold text-orange-500">&nbsp;{(details[params.id].rating*3).toFixed(2)}€ </span> </p>

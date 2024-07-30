@@ -102,14 +102,15 @@ return (
                     </label>
                 </div>
             </div>
-            <div className="Mid w-[40%] h-[2.5rem] ml-[3rem] rounded-md flex max-[1400px]:w-[30%] max-[768px]:w-0 max-[768px]:hidden">
-                <div className="w-[10%] h-full bg-orange-500 rounded-l-md flex justify-center items-center max-[1400px]:h-[70%]">
+            <div className="Mid w-[40%] h-[2.5rem]  ml-[3rem] rounded-md flex max-[1400px]:w-[30%] max-[768px]:w-0 max-[768px]:hidden">
+                {/* <div className="w-[10%] h-full bg-orange-500 rounded-l-md flex justify-center items-center max-[1400px]:h-[70%]">
                 <IoSearch className="" size={25} style={{color: 'white'}} />
                 </div>
                 <div className="w-[80%] h-full  rounded-r-md max-[1400px]:h-[70%]">
                 <input onChange={handleChange} value={searchValue} type="text" placeholder='Under construction...' className="px-3 w-[100%] h-full rounded-r-md max-[1000px]:text-sm" />
-                {/* <Searchbar/> */}
-                </div> 
+                
+                </div>  */}
+                <Searchbar/>
             </div>
             <div className="Right w-[30%] h-full  flex gap-1 max-[768px]:w-[50%]">
                 <div className="w-[40%]   h-full flex justify-end items-center max-[768px]:justify-start">

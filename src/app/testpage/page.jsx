@@ -1,108 +1,99 @@
 'use client'
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchContent } from "@/Redux/slices/apiSlice"
-
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContent } from "@/Redux/slices/apiSlice";
 import { IoMdArrowDropdown } from "react-icons/io";
-
-import Searchbar from "@/components/Searchbar"
-import Link from "next/link"
-import React from "react"
+import Searchbar from "@/components/Searchbar";
+import Link from "next/link";
+import React from "react";
 
 function Api() {
-    const [searchVal, setSearchVal] = useState("");
-    const dispatch = useDispatch()
-    const data = useSelector((state) => state.content.contents)
+    const dispatch = useDispatch();
+    const data = useSelector((state) => state.content.contents);
+
+    // Use Redux to get the search value
+    const searchVal = useSelector((state) => state.search.searchVal);
+
+    const isLoading = useSelector((state) => state.content.isLoading);
+    const error = useSelector((state) => state.content.error);
+    const bookPrice = useSelector((state) => state.price.value);
+
+    const [filteredBooks, setFilteredBooks] = useState([]);
+    const [filter, setFilter] = useState(false);
+    const [show, setShow] = useState(false);
+
+    const [all, setAll] = useState(true);
+    const [initialLoad, setInitialLoad] = useState(true);  // Track if it's the initial load
+
+    // Fetch content on initial load
     useEffect(() => {
       if (!data.length) {
-
         dispatch(fetchContent());
+      } else {
+        setFilteredBooks(data);  // Set initial filtered books to all data
       }
-      
-    }, [data.length] )
-    
-    const isLoading = useSelector((state) => state.content.isLoading)
-    const error = useSelector((state) => state.content.error)
-    const bookPrice = useSelector((state) => state.price.value)
-    
+    }, [data, dispatch]);
 
-    //Searchbar usestates//
-    const searching = useSelector((state) => state.search.searchVal)
+    // Filter books by search value whenever it changes
+    useEffect(() => {
+      const filterBySearch = () => {
+        if (searchVal.length === 0) {
+          setFilteredBooks(data);  // If search is empty, show all books
+          return;
+        }
 
-    
-    
-    
-    
-    
-    //copy array of my data API that will be used to filter with searchbar"
-    const [filteredBooks, setFilteredBooks] = useState(data);
-    
-    const [filter, setFilter] = useState(false)
+        const filteredBySearch = data.filter((book) =>
+          (book.title && book.title.toLowerCase().includes(searchVal.toLowerCase())) ||
+          book.authors.toLowerCase().includes(searchVal.toLowerCase())
+        );
+        setFilteredBooks(filteredBySearch);  // Update filtered books based on search
+      };
 
+      filterBySearch();
+    }, [searchVal, data]);
+
+    // Filter books by genre
     const filterByGenres = (genre) => {
       if (!data || !data.length) return;
 
-      const filtered = data.filter((book) => (book.genres && book.genres.includes(genre)))
-      setFilter(true)
-      console.log(filtered);
-      setFilteredBooks(filtered);
-    }
-    //used to toggle my genres bar//
-    const [show, setShow] = useState(false) 
-    
-    //ensures that the clicked book(once filtered) brings you to the correct index
+      const filtered = data.filter((book) => book.genres && book.genres.includes(genre));
+      setAll(false);
+      setFilter(true);
+      setInitialLoad(false);  // It's no longer the initial load
+      setFilteredBooks(filtered);  // Update filtered books based on genre
+    };
+
+    const showAll = () => {
+      setAll(true);
+      setFilter(false);
+      setFilteredBooks(data);  // Show all books
+    };
+
     const searchIndex = (element) => {
       const result = data.findIndex((x) => x.title === element.title);
       return result;
     };
-  
-  useEffect(() => {
-    const filterBySearch = () => {
-    
-      if (searchVal.length == 0) {
-        dispatch(fetchContent())
-        setFilteredBooks(data);
-        return;
-      }
-      
-      const filteredBySearch = data.filter((book) =>
-       (book.title && book.title.toLowerCase().includes(searchVal.toLowerCase())||book.authors.toLowerCase().includes(searchVal.toLowerCase()))
 
-      );
-      setFilteredBooks(filteredBySearch);
-    };
-   
-    filterBySearch();
-   
-  }, [searchVal] );
+    const booksToDisplay = initialLoad ? data.slice(0, 20) : filteredBooks;
 
-  
-  //!filter by genres//
-
-
-  //if the searchbar is empty, we will map data instead of filteredBooks. Otherwise the mapping will be empty upon page reload. ALso filter needs to be false in order to map data, otherwise my filter by genres buttons don't do anything. 
-
-  const booksToDisplay = searchVal.length === 0 && !filter? data : filteredBooks
-  // const booksToDisplay = filteredBooks
-
- 
     if (isLoading) {
-      return <span className="loading loading-spinner loading-lg"></span>
+      return <span className="loading loading-spinner loading-lg"></span>;
+    }
 
-    }
-  
     if (error) {
-      return error
+      return error;
     }
-   
-      return (
+
+    return (
       <div className="flex flex-col gap-5 w-full">
         <div className="flex w-full justify-center">
-          <button className="w-[8rem] bg-orange-500 text-white h-[2rem] flex justify-center items-center rounded-md" onClick={() => setShow(!show)}>Filter genres <IoMdArrowDropdown />
+          <button className="w-[8rem] bg-orange-500 text-white h-[2rem] flex justify-center items-center rounded-md" onClick={() => setShow(!show)}>
+            Filter genres <IoMdArrowDropdown />
           </button>
         </div>
-         <div className={`w-full ${show? "h-[3rem] max-[1560px]:h-[5rem] max-[825px]:h-[7rem] max-[576px]:h-[9rem] max-[471px]:h-[11.5rem] max-[393px]:h-[14rem] text-black border-[1px]" : "h-0 text-transparent border-none opacity-0"}  bg-white duration-300 flex-wrap flex  gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300 px-2`}>
-            <button onClick={() => filterByGenres("Science Fiction")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0  ">Sci-fi</button>
+        <div className={`w-full ${show ? "h-[3rem] max-[1560px]:h-[5rem] max-[825px]:h-[7rem] max-[576px]:h-[9rem] max-[471px]:h-[11.5rem] max-[393px]:h-[14rem] text-black border-[1px]" : "h-0 text-transparent border-none opacity-0"} bg-white duration-300 flex-wrap flex gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300 px-2`}>
+            <button onClick={showAll} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">All</button>
+            <button onClick={() => filterByGenres("Science Fiction")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Sci-fi</button>
             <button onClick={() => filterByGenres("Fantasy")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Fantasy</button>
             <button onClick={() => filterByGenres("Thriller")}className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Thriller</button>
             <button onClick={() => filterByGenres("Historical")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Historical</button>
@@ -121,50 +112,38 @@ function Api() {
             <button onClick={() => filterByGenres("War")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">War</button>
         </div>
         <div className="flex w-full h-[5rem] justify-center items-center">
-          <Searchbar searchVal={searchVal} setSearchVal={setSearchVal}/>
+          {/* Use the updated Searchbar component */}
+          <Searchbar />
         </div>
         <div className="w-full justify-center flex flex-wrap gap-5">
-
-          {
-          booksToDisplay.slice(0, 20).map((element, id) => {
-            return(
-              <div key={id}  className="card w-[15rem] h-[25rem] flex flex-col  bg-[#ebebe5] rounded-md overflow-hidden">
-                <Link  href={`/testpage/${searchIndex(element)}`}>
-                  <div className="w-full h-[18rem]  flex justify-center">
-                      <img src={element.image_url} alt="" width="100%"  />
-                      {/* <Image
-                      src={element.image_url}
-                      alt='image of the book cover'
-                      width={100}
-                      height={100}
-                      /> */}
+          {booksToDisplay.map((element, id) => (
+            <div key={id} className="card w-[15rem] h-[25rem] flex flex-col bg-[#ebebe5] rounded-md overflow-hidden">
+              <Link href={`/testpage/${searchIndex(element)}`}>
+                <div className="w-full h-[18rem] flex justify-center">
+                  <img src={element.image_url} alt="" width="100%" />
+                </div>
+                <div className="w-full h-[2rem] flex flex-col justify-start items-center">
+                  <h1 className="text-lg line-clamp-1 px-4 font-bold">{element.title}</h1>
+                </div>
+                <div className="w-full h-[2rem]">
+                  <p className="text-start px-2">{element.authors}</p>
+                </div>
+                <div className="w-full h-[3rem] flex">
+                  <div className="left w-1/2 h-full flex justify-center items-center">
+                    <p className="font-bold">Price: <span className="text-orange-500">{(element.rating * 3).toFixed(2) + "€"}</span></p>
                   </div>
-                  <div className="w-full h-[2rem]  flex flex-col justify-start items-center">
-                      <h1 className="text-lg line-clamp-1 px-4 font-bold">{element.title}</h1>
+                  <div className="right w-1/2 h-full flex justify-center items-center">
+                    <div className="flex w-[4rem] h-[2rem] bg-black rounded-sm border-white border-[2px]">
+                      <button className="w-full h-full text-white">View</button>
+                    </div>
                   </div>
-                  <div className="w-full h-[2rem] ">
-                      <p className="text-start px-2">{element.authors}</p>
-                  </div>
-                  <div className="w-full h-[3rem]  flex">
-                      <div className="left w-1/2 h-full flex justify-center items-center">
-                       <p>Price: {(element.rating * 3).toFixed(2) + "€"}</p>
-                      </div>
-                      <div className="right w-1/2 h-full flex justify-center items-center">
-                        <div className="flex w-[4rem] h-[2rem] bg-black rounded-sm border-white border-[2px]">
-                          <button className="w-full h-full text-white">View</button>
-                        </div>
-                      </div>
-                  </div>
-                </Link> 
-              </div>
-            )
-          })
-          
-          }
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
-        
-    )
-  }
-  
-  export default Api
+    );
+}
+
+export default Api;
