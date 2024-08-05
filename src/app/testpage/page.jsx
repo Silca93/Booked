@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContent } from "@/Redux/slices/apiSlice";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { setGenre, clearGenre } from "@/Redux/slices/genreSlice";
 import Searchbar from "@/components/Searchbar";
 import Link from "next/link";
 import React from "react";
@@ -10,6 +11,9 @@ import React from "react";
 function Api() {
     const dispatch = useDispatch();
     const data = useSelector((state) => state.content.contents);
+    const genre = useSelector((state) => state.genre.genre);
+
+
 
     // Use Redux to get the search value
     const searchVal = useSelector((state) => state.search.searchVal);
@@ -23,7 +27,9 @@ function Api() {
     const [show, setShow] = useState(false);
 
     const [all, setAll] = useState(true);
-    const [initialLoad, setInitialLoad] = useState(true);  // Track if it's the initial load
+    const [initialLoad, setInitialLoad] = useState(true);  
+    const [hasSearched, setHasSearched] = useState(false);
+
 
     // Fetch content on initial load
     useEffect(() => {
@@ -39,6 +45,7 @@ function Api() {
       const filterBySearch = () => {
         if (searchVal.length === 0) {
           setFilteredBooks(data);  // If search is empty, show all books
+          setHasSearched(false); 
           return;
         }
 
@@ -47,21 +54,41 @@ function Api() {
           book.authors.toLowerCase().includes(searchVal.toLowerCase())
         );
         setFilteredBooks(filteredBySearch);  // Update filtered books based on search
+        setHasSearched(true)
       };
 
       filterBySearch();
     }, [searchVal, data]);
 
     // Filter books by genre
-    const filterByGenres = (genre) => {
-      if (!data || !data.length) return;
 
-      const filtered = data.filter((book) => book.genres && book.genres.includes(genre));
-      setAll(false);
-      setFilter(true);
-      setInitialLoad(false);  // It's no longer the initial load
-      setFilteredBooks(filtered);  // Update filtered books based on genre
-    };
+    // const filterByGenres = (genre) => {
+    //   if (!data || !data.length) return;
+
+    //   const filtered = data.filter((book) => book.genres && book.genres.includes(genre));
+    //   setAll(false);
+    //   setFilter(true);
+    //   setInitialLoad(false);  
+    //   // It's no longer the initial load
+    //   setFilteredBooks(filtered);  // Update filtered books based on genre
+    // };
+
+
+    useEffect(() => {
+      if (!data.length) return;
+
+      if (genre === '') {
+        // If no genre is selected, show all books
+        setFilteredBooks(data);
+      } else {
+        // Filter books by selected genre
+        const filteredByGenre = data.filter((book) => book.genres && book.genres.includes(genre));
+        setFilteredBooks(filteredByGenre);
+      }
+
+      // Update the state to reflect genre filtering
+      setInitialLoad(false);
+    }, [genre, data]);
 
     const showAll = () => {
       setAll(true);
@@ -74,7 +101,7 @@ function Api() {
       return result;
     };
 
-    const booksToDisplay = initialLoad ? data.slice(0, 20) : filteredBooks;
+    const booksToDisplay = initialLoad && !hasSearched? data.slice(0, 20) : filteredBooks;
 
     if (isLoading) {
       return <span className="loading loading-spinner loading-lg"></span>;
@@ -93,27 +120,27 @@ function Api() {
         </div>
         <div className={`w-full ${show ? "h-[3rem] max-[1560px]:h-[5rem] max-[825px]:h-[7rem] max-[576px]:h-[9rem] max-[471px]:h-[11.5rem] max-[393px]:h-[14rem] text-black border-[1px]" : "h-0 text-transparent border-none opacity-0"} bg-white duration-300 flex-wrap flex gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300 px-2`}>
             <button onClick={showAll} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">All</button>
-            <button onClick={() => filterByGenres("Science Fiction")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Sci-fi</button>
-            <button onClick={() => filterByGenres("Fantasy")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Fantasy</button>
-            <button onClick={() => filterByGenres("Thriller")}className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Thriller</button>
-            <button onClick={() => filterByGenres("Historical")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Historical</button>
-            <button onClick={() => filterByGenres("Adult")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Young Adult</button>
-            <button onClick={() => filterByGenres("Childrens")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Children</button>
-            <button onClick={() => filterByGenres("Classics")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Classics</button>
-            <button onClick={() => filterByGenres("Philosophy")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Philosophy</button>
-            <button onClick={() => filterByGenres("Academic")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Academic</button>
-            <button onClick={() => filterByGenres("Fiction")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Fiction</button>
-            <button onClick={() => filterByGenres("Horror")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Horror</button>
-            <button onClick={() => filterByGenres("Crime")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Crime</button>
-            <button onClick={() => filterByGenres("Adventure")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Adventure</button>
-            <button onClick={() => filterByGenres("Psychology")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Psychology</button>
-            <button onClick={() => filterByGenres("Biography")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Biography</button>
-            <button onClick={() => filterByGenres("Cultural")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Cultural</button>
-            <button onClick={() => filterByGenres("War")} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">War</button>
+            <button onClick={() => dispatch(setGenre("Science Fiction"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Sci-fi</button>
+            <button onClick={() => dispatch(setGenre("Fantasy"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Fantasy</button>
+            <button onClick={() => dispatch(setGenre("Thriller"))}className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Thriller</button>
+            <button onClick={() => dispatch(setGenre("Historical"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Historical</button>
+            <button onClick={() => dispatch(setGenre("Adult"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Young Adult</button>
+            <button onClick={() => dispatch(setGenre("Childrens"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Children</button>
+            <button onClick={() => dispatch(setGenre("Classics"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Classics</button>
+            <button onClick={() => dispatch(setGenre("Philosophy"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Philosophy</button>
+            <button onClick={() => dispatch(setGenre("Academic"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Academic</button>
+            <button onClick={() => dispatch(setGenre("Fiction"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Fiction</button>
+            <button onClick={() => dispatch(setGenre("Horror"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Horror</button>
+            <button onClick={() => dispatch(setGenre("Crime"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Crime</button>
+            <button onClick={() => dispatch(setGenre("Adventure"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Adventure</button>
+            <button onClick={() => dispatch(setGenre("Psychology"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Psychology</button>
+            <button onClick={() => dispatch(setGenre("Biography"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Biography</button>
+            <button onClick={() => dispatch(setGenre("Cultural"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">Cultural</button>
+            <button onClick={() => dispatch(setGenre("War"))} className="hover:underline hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2 max-[1000px]:p-0">War</button>
         </div>
         <div className="flex w-full h-[5rem] justify-center items-center">
           {/* Use the updated Searchbar component */}
-          <Searchbar />
+          <Searchbar all={all} filter={filter} setAll={setAll} setFiler={setFilter}/>
         </div>
         <div className="w-full justify-center flex flex-wrap gap-5">
           {booksToDisplay.map((element, id) => (

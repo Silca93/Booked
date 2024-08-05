@@ -58,12 +58,7 @@ export default function Details({params}) {
         <div className="flex w-[20rem]">
             <img src={details[params.id].image_url} alt="" width="100%" />
         </div>
-          // <Image
-          // src={details[params.id].image_url}
-          // alt="book cover"
-          // width={200}
-          // height={200}
-          // />
+          
           : "no existing data"
           }
         </div>
@@ -75,9 +70,8 @@ export default function Details({params}) {
             <p className="text-2xl font-bold">{details[params.id].title}</p>
             <p><span className="font-bold">By:</span>   <span className="text-gray-600">{details[params.id].authors}</span></p>
             <div className="flex w-full gap-5 pr-5 text-sm ">
-              <div className="w-[10rem] h-[2.5rem] bg-black px-1 flex justify-center rounded-sm max-[1500px]:h-[3rem] max-[1000px]:h-[3.8rem] max-[1000px]:w-[11rem] max-[1100px]:text-[10px]">
-                <p className='text-center text-white max-[1100px]:text-[10px]'><span className="font-bold text-center max-[1100px]:text-[12px]">Rating :</span> <span className="text-yellow-300"> {details[params.id].rating} /5 </span> ({details[params.id].rating_count.toLocaleString()}) </p>
-              </div>
+                <p className='text-center  max-[1100px]:text-[10px]'><span className="font-bold text-center max-[1100px]:text-[12px]">Rating :</span> <span className="text-yellow-500"> {details[params.id].rating} /5 </span> ({details[params.id].rating_count.toLocaleString()}) </p>
+              
               <p><span className="font-bold">Edition: </span> {details[params.id].edition == ""? "Unknown" : details[params.id].edition}</p>
               <p><span className="font-bold">Page count: </span> {details[params.id].num_pages}</p>
               <p><span className="font-bold">Genre: </span> {firstThreeGenres.join(", ")}</p>

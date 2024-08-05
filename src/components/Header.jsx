@@ -18,6 +18,7 @@ import { logIn } from '@/Redux/slices/loginSlice';
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchVal } from '@/Redux/slices/searchSlice';
+import { setGenre, clearGenre } from "@/Redux/slices/genreSlice";
 import Searchbar from './Searchbar';
 
 
@@ -32,6 +33,11 @@ const handleChange = (event) => {
     setSearchValue(event.target.value);
     dispatch(setSearchVal(event.target.value));
 }
+
+const data = useSelector((state) => state.content.contents);
+const genre = useSelector((state) => state.genre.genre);
+
+
 
 
 const basketItems = useSelector((state) => state.basket.value.length);
@@ -57,18 +63,18 @@ const [isPulsing, setIsPulsing] = useState(false);
 
 const [show, setShow] = useState(false)
 
+
+const handleGenre = (genre) => {
+    dispatch(setGenre(genre))
+    setShow(false)
+}
+
+
 return (
-    <div className='w-vw h-[7rem] flex flex-col justify-center items-center bg-[#f5f4f3] relative max-[768px]:h-[3.5rem]'>
-        <div className="navbar w-[70%] h-[8%] bg-[#dedcd6] rounded-md mx-[6rem] flex items-center fixed top-1 z-30 border-[1px] border-black border-opacity-30 max-[768px]:w-full max-[768px]:rounded-none max-[768px]:top-0 max-[768px]:border-b-2 max-[768px]:border-t-0 max-[768px]:border-l-0 max-[768px]:border-r-0 max-[768px]:bg-[#efefed]">
+    <div className='w-vw h-[7rem]  flex flex-col justify-center items-center bg-[#f5f4f3] relative max-[768px]:h-[3.5rem]'>
+        <div className="navbar w-[70%] h-[8%]  bg-[#dedcd6] rounded-md mx-[6rem] flex items-center fixed top-1 z-30 border-[1px] border-black border-opacity-30 max-[768px]:w-full max-[768px]:rounded-none max-[768px]:top-0 max-[768px]:border-b-2 max-[768px]:border-t-0 max-[768px]:border-l-0 max-[768px]:border-r-0 max-[768px]:bg-[#efefed]">
             <div className="Left w-[30%]  h-full   flex items-center max-[768px]:w-[50%]">
                 <div className="Booked flex items-center justify-center  w-[40%] h-full  rounded-l-full">
-                    {/* <Image
-                    className="rounded-full"
-                    src={logo}
-                    alt='logo of booked'
-                    width="100%"
-                    height="100%"
-                    /> */}
                 </div>
                 <div className="w-[20%] mx-2  h-full flex justify-center items-center max-[768px]:w-[30%]">
                 <Link href="/">
@@ -76,20 +82,20 @@ return (
                 </Link> 
                 </div>
                 <div className="w-[50%]  h-full flex justify-center items-center max-[768px]:w-[30%] ">
-                    <div onClick={() => {setShow(!show)}} className="w-[85%] h-[55%] cursor-pointer flex border-orange-500 border-[1px] rounded-sm max-[1400px]:w-[30%] max-[850px]:rounded-md max-[768px]:h-[2rem] max-[768px]:w-[2rem]">
+                    <div onClick={() => {setShow(!show)}} className="w-[85%] h-[55%] cursor-pointer p-1 flex border-orange-500 border-[1px] rounded-sm max-[1400px]:w-[30%] max-[850px]:rounded-md max-[768px]:h-[2rem] max-[768px]:w-[2rem]">
                         <div className="flex justify-center  items-center w-[25%] h-full flex-col gap-1 max-[1400px]:w-full">
-                            <span className="mx-1 w-[1.5rem] h-[2px] bg-black max-[1200px]:w-[1rem]  "></span>
-                            <span className="mx-1 w-[1.5rem] h-[2px] bg-black max-[1200px]:w-[1rem] "></span>
-                            <span className="mx-1 w-[1.5rem] h-[2px] bg-black max-[1200px]:w-[1rem] "></span>
+                            <span className="px-2 w-[1.5rem] h-[2px] bg-black max-[1200px]:w-[1rem]  "></span>
+                            <span className="px-2 w-[1.5rem] h-[2px] bg-black max-[1200px]:w-[1rem] "></span>
+                            <span className="px-2 w-[1.5rem] h-[2px] bg-black max-[1200px]:w-[1rem] "></span>
                         </div>  
                         <div className="flex justify-center  items-center w-[75%]  h-full px-1 py-1 max-[1400px]:hidden">
-                            <p className="text-[13px] max-[1650px]:text-[9px] ">All Categories</p>
+                            <p className="text-[12px] max-[1650px]:text-[8px] ">All Categories</p>
                             
                         </div>
                     </div>
                    
                     <label className="swap swap-rotate  ml-3 mr-1">
-  
+
                     {/* this hidden checkbox controls the state */}
                     <input type="checkbox" className="theme-controller" value="synthwave" />
                     
@@ -103,13 +109,6 @@ return (
                 </div>
             </div>
             <div className="Mid w-[40%] h-[2.5rem]  ml-[3rem] rounded-md flex max-[1400px]:w-[30%] max-[768px]:w-0 max-[768px]:hidden">
-                {/* <div className="w-[10%] h-full bg-orange-500 rounded-l-md flex justify-center items-center max-[1400px]:h-[70%]">
-                <IoSearch className="" size={25} style={{color: 'white'}} />
-                </div>
-                <div className="w-[80%] h-full  rounded-r-md max-[1400px]:h-[70%]">
-                <input onChange={handleChange} value={searchValue} type="text" placeholder='Under construction...' className="px-3 w-[100%] h-full rounded-r-md max-[1000px]:text-sm" />
-                
-                </div>  */}
                 <Searchbar/>
             </div>
             <div className="Right w-[30%] h-full  flex gap-1 max-[768px]:w-[50%]">
@@ -168,24 +167,26 @@ return (
                 </div>
             </div>
         </div>
-        <div className={`Slidedown fixed  top-[4.8rem] w-[67%] ${show? "h-[3rem] text-black border-[1px]" : "h-0 text-transparent border-none"}  bg-white duration-300 flex gap-5 justify-center items-center rounded-b-sm text-sm border-gray-300`}>
-            <button className="hover:underline hover:underline-offset-4">Sci-fi</button>
-            <button className="hover:underline hover:underline-offset-4">Fantasy</button>
-            <button className="hover:underline hover:underline-offset-4">Thriller</button>
-            <button className="hover:underline hover:underline-offset-4">Historical</button>
-            <button className="hover:underline hover:underline-offset-4">Adult</button>
-            <button className="hover:underline hover:underline-offset-4">Children</button>
-            <button className="hover:underline hover:underline-offset-4">Classics</button>
-            <button className="hover:underline hover:underline-offset-4">Philosophy</button>
-            <button className="hover:underline hover:underline-offset-4">Academic</button>
-            <button className="hover:underline hover:underline-offset-4">Fiction</button>
-            <button className="hover:underline hover:underline-offset-4">Horror</button>
-            <button className="hover:underline hover:underline-offset-4">Young Adult</button>
-            <button className="hover:underline hover:underline-offset-4">Crime</button>
-            <button className="hover:underline hover:underline-offset-4">Adventure</button>
-            <button className="hover:underline hover:underline-offset-4">Psychology</button>
-            <button className="hover:underline hover:underline-offset-4">Biography</button>
-            <button className="hover:underline hover:underline-offset-4">Cultural</button>
+        <div className={`Slidedown fixed flex flex-col left-0 top-0 w-[10%] ${show? "h-screen  max-[1500px]:w-[20%] max-[900px]:w-[25%] max-[600px]:w-[33%]  text-black border-[1px]  sidebar-active" : "w-0 text-transparent border-none opacity-0 z-0 cursor-default"}  bg-white flex-wrap  z-50 duration-100 flex gap-6 justify-center items-center rounded-b-sm text-sm border-gray-300`}>
+            <button onClick={() => handleGenre("")} className="hover:underline  text-[17px] hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">All</button>
+            <button onClick={() => handleGenre("Science Fiction")} className="hover:underline  text-[17px] hover:underline-offset-4 duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Sci-fi</button>
+            <button onClick={() => handleGenre("Fantasy")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Fantasy</button>
+            <button onClick={() => handleGenre("Thriller")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Thriller</button>
+            <button onClick={() => handleGenre("Historical")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Historical</button>
+            
+            <button onClick={() => handleGenre("Childrens")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Children</button>
+            <button onClick={() => handleGenre("Classics")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Classics</button>
+            <button onClick={() => handleGenre("Philosophy")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Philosophy</button>
+            <button onClick={() => handleGenre("Academic")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Academic</button>
+            <button onClick={() => handleGenre("Fiction")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Fiction</button>
+            <button onClick={() => handleGenre("Horror")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Horror</button>
+            <button onClick={() => handleGenre("Adult")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Young Adult</button>
+            <button onClick={() => handleGenre("Crime")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Crime</button>
+            <button onClick={() => handleGenre("Adventure")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Adventure</button>
+            <button onClick={() => handleGenre("Psychology")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Psychology</button>
+            <button onClick={() => handleGenre("Biography")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Biography</button>
+            <button onClick={() => handleGenre("Cultural")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">Cultural</button>
+            <button onClick={() => handleGenre("War")} className="hover:underline hover:underline-offset-4 text-[17px] duration-200 hover:text-white px-2 text-start  hover:bg-orange-500 hover:p-2">War</button>
         </div>
     </div>
 )

@@ -3,7 +3,7 @@ import { IoSearch } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
 import { setSearchVal } from '@/Redux/slices/searchSlice';
 
-export default function Searchbar({}) {
+export default function Searchbar({all, filter, setAll, setFilter}) {
     
     const dispatch = useDispatch()
 

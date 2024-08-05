@@ -42,13 +42,13 @@ export default function Shopping() {
     <div className="w-full flex max-[768px]:flex-col">
         <div className="Left w-[60%] h-[45rem] bg-[#F0F0F0] max-[768px]:w-full max-[768px]:h-[32rem]">
           <div className="flex w-full h-[5%]  justify-start px-3">
-            <div className="flex w-[9rem] h-full my-3  justify-center items-center hover:border-[1px] hover:border-black">
-              <Link href="/">
-                <button className="flex justify-center items-center gap-2 text-gray-600">
+            <div className="flex w-[10rem] h-full my-3  justify-center items-center hover:border-[1px] hover:border-black rounded-sm">
+                <button className="flex justify-center items-center gap-2   z-50 mt-3 mb-3">
+              <Link href="/" className='flex gap-3 justify-center items-center'>
                   <MdOutlineKeyboardBackspace />
-                    Back to store
-                </button>
+                    <span>Back to store</span>
               </Link>
+                </button>
             </div>
           </div>
           <div className="w-full h-[95%]">

@@ -6,6 +6,7 @@ import { contentSlice } from "./slices/apiSlice";
 import { favSlice } from "./slices/favSlice";
 import { priceSlice } from "./slices/BookPrice";
 import {searchSlice} from "./slices/searchSlice";
+import { genreSlice } from "./slices/genreSlice";
 import { loginSlice } from "./slices/loginSlice";
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
         favourites:favSlice.reducer,
         price:priceSlice.reducer,
         search:searchSlice.reducer,
+        genre:genreSlice.reducer,
         login:loginSlice.reducer,
     }
 })
